@@ -24,6 +24,9 @@ urlpatterns = [
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^blog/$', 'blog.views.main', name='blog'),
+    url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),
+    url(r'^blog/add_comment/(?P<pk>\d+)/$', 'blog.views.add_comment', name='blog-add-comment'),
 ]
 
 if settings.DEBUG:

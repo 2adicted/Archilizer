@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block head_title %} {{ block.super }} | {{ title }} {% endblock %}
+
+{% block content %}
+
+    <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
+    <div id="container">
+        <div id="menu">
+            {% block nav-global %}
+
+                <!-- MENU -->
+                <h3>MyBlog</h3>
+                {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}">Admin</a>
+                <a href="{% url 'admin:blog_post_add' %}">Add post</a>
+                {% endif %}
+
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block sub_content %} {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}
+

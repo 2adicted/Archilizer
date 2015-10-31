@@ -1,0 +1,39 @@
+{% extends "blog/blayout.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1> RIGHT HERE </h1></br>
+<div class="title">{{ post.title }}</div>
+<ul>
+    <div class="time">{{ post.created }}</div>
+    <div class="body">{{ post.body|linebreaks }}</div>
+</ul>
+
+	<form method="POST" action=""> {% csrf_token %}
+		{{ form|crispy }}
+		<input class="btn btn-default" type="submit" value="Sign Up">
+	</form>	
+<!-- Comments  -->
+{% if comments %}
+    <p>Comments:</p>
+{% endif %}
+
+{% for comment in comments %}
+    <div class="comment">
+        <div class="time">{{ comment.created }} | {{ comment.author }}</div>
+        <div class="body">{{ comment.body|linebreaks }}</div>
+    </div>
+{% endfor %}
+
+<div id="addc">Add a comment</div>
+<!-- Comment form  -->
+<form  method="POST" action="{% url 'blog-add-comment' post.id %}">{% csrf_token %}
+{{ form|crispy }}
+    <div id="cform">
+        Name: {{ form.author }}
+        <p>{{ form.body|linebreaks }}</p>
+    </div>
+    <div id="submit"><input type="submit" value="Submit"></div>
+</form>
+
+{% endblock %}

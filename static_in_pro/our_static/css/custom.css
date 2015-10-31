@@ -1,6 +1,9 @@
 html, body{
 	height:100%;
 }
+body{
+    background-color: #F5F5F5;
+}
 .wrapper{
 	min-height:82%;
 	height: auto !important;
@@ -14,4 +17,28 @@ html, body{
 }
 .text-align-center{
 	text-align: center;
+}
+
+/*blog */
+
+
+.blog-container{
+/*    background-color: #FAFAFA;*/
+    padding: 1em;
+    border-style: dotted;
+    border-width: 1px;
+    border-color: #E8E8E8;
+    margin-bottom: 2em;
+}
+.title{
+    font-size: 2em;
+}
+.time{
+/*    float: left;*/
+    color: #828282;
+    padding: 1em 0 1em 0;
+}
+.blog-header{
+    margin-bottom: 2em;
+    font-size: 3em;
 }
