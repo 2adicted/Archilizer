@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+
+{% block head_title_ %} {{ block.super }} | {{ title }} {% endblock %}
+
+
+{% block jumbotron %}
+<!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron box-shadow-content">
+  		<div class="container">
+	      <div class="row">
+		      <div class="col-sm-6">
+		        <h1>Archilizer</h1>
+		        <p class="lead">This project is about using code to make our life as architects easier. It focuses on BIM, Revit, Add-ins for Revit as well as generative stuff.</p>
+		        <p>
+		          <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>
+		        </p>	      	
+		      </div>
+		      <div class="col-sm-4 control-label pull-right">
+		      <img class="img-responsive" src='{% static "img/neuron-network.jpg" %}' style="max-height: 340px;"> 	
+		      </div>  
+	      </div>    	
+      	</div>
+      </div>
+{% endblock %}
+
+{% block content %}
+
+<style>
+	body{   
+	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
+	        center center fixed;
+	    -webkit-background-size: cover; 
+	    -moz-background-size: cover; 
+	    -o-background-size: cover; 
+	    background-size: cover;          
+	}	
+	body{
+		padding-top: 50px !important;
+	}
+	.jumbotron{
+		background-color: #FFF;
+	}
+	.featured-container{
+		background-color: #FFF;
+		margin: auto;
+		width:auto;
+		padding: 20px 20px;
+		border-top: solid 1px;
+		border-color: #E1E1E1;
+	}
+	.box-shadow-content{
+		box-shadow: 0px 4px 15px rgba(40,40,40, 0.4);
+	}
+</style>
+
+<div class="space" style="margin-bottom:10px;"></div>
+<div class="col-sm-4">
+	<i class="fa fa-envelope-o fa-3x" style="color:#fff"></i>
+	<h2 style="color:#FFF;"> Hello, stranger. </h2>
+	<form method="POST" action=""> {% csrf_token %}
+		{{ form|crispy }}
+		<input class="btn btn-default" type="submit" value="Sign Up">
+	</form>		
+    <br/>           
+    <p style="color:#e9e9e9; font-weight:lighter;"> Here you can subscribe to our mailing list. </p>
+</div>
+</div>
+<div class="space" style="margin-bottom:20px;"></div>
+
+<div class="row featured-container" id="activity">
+	<div class="container">
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>Revit Add-In</h2>
+	        <p class="lead">Automatic Dimensions</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	</div>
+</div>
+<div class="row featured-container" id="activity">
+	<div class="container">
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>Revit Add-In</h2>
+	        <p class="lead">Automatic Dimensions</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	    <div class="col-sm-3">
+	        <i class="fa fa-gears fa-3x"></i>
+	        <h2>This and that</h2>
+	        <p class="lead">This section is about ...</p>
+	    </div>
+	</div>
+</div>
+
+{% endblock %}

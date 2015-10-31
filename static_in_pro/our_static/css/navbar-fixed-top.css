@@ -1,0 +1,8 @@
+body {
+/*  min-height: 2000px;*/
+  padding-top: 70px;
+}
+
+.navbar{
+    background-image: linear-gradient(to bottom,#FBFBFB 0,#FFFFFF 100%) !important;
+}

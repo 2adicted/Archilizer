@@ -1,0 +1,17 @@
+html, body{
+	height:100%;
+}
+.wrapper{
+	min-height:82%;
+	height: auto !important;
+	height:100%;
+	margin: 0 auto -4em;
+	margin-bottom: 0px !important;
+}
+.footer{
+	border-top:solid 1px;
+	border-color: #E1E1E1;
+}
+.text-align-center{
+	text-align: center;
+}
