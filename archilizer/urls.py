@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),
     url(r'^blog/add_comment/(?P<pk>\d+)/$', 'blog.views.add_comment', name='blog-add-comment'),
     url(r'^blog/month/(\d+)/(\d+)/$', 'blog.views.month', name='blog-month'),
+    url(r'^blog/delete_comment/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
+    url(r'^blog/delete_comment/(\d+)/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
 ]
 
 if settings.DEBUG:

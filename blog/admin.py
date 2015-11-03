@@ -6,7 +6,7 @@ from .models import Post, Comment
 
 class PostAdmin(admin.ModelAdmin):
 	search_field = ['title', 'created']
-	display_fields = ['title', 'created']
+	list_display = ['__unicode__', 'created']
 
 admin.site.register(Post, PostAdmin)
 

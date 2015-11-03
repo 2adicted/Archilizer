@@ -39,7 +39,6 @@ def main(request):
 def month(request, year, month):
 	"""Monthly archive."""
 	posts = Post.objects.filter(created__year=year, created__month=month)
-	print (posts)
 	return render(
 	request,
 	'blog/list.html',
@@ -75,7 +74,6 @@ def post(request, pk):
 def add_comment(request, pk):
 	""" Add a new comment. """
 	p = request.POST
-	print (str(pk))
 	if p.has_key("body") and p["body"]:
 		author = "Anonymous"
 		if p["author"]: author = p["author"]
@@ -86,8 +84,13 @@ def add_comment(request, pk):
 
 		comment = cf.save(commit=False)
 		comment.author = author
-		comment.save()
+		
+		notify = True
+		if request.user.username == 'ak': notify = False
+		comment.save(notify=notify)
+		
 	return HttpResponseRedirect(reverse("blog-post", args=(pk,)))
+
 
 def mkmonth_lst():
 	"""Make a list of months to show archive links."""
@@ -109,3 +112,16 @@ def mkmonth_lst():
 			months.append((y, m, month_name[m]))
 	
 	return months
+
+
+def delete_comment(request, post_pk, pk=None):
+	"""Delete comment(s) with primary key 'pk' or with pks in POST."""
+	if request.user.is_staff:
+		if not pk: 
+			pklst = request.POST.getlist('delete')
+		else: pklst = [pk]
+
+		for pk in pklst:
+			Comment.objects.get(pk=pk).delete()
+
+		return HttpResponseRedirect(reverse("blog-post", args=(post_pk,)))

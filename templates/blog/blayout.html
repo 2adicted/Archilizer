@@ -3,31 +3,35 @@
 {% block head_title %} {{ block.super }} | {{ title }} {% endblock %}
 
 {% block content %}
-<div class="blog-header text-align-center">My Blogs</div>
-<div id="menu">
-    {% block nav-global %}
-        <!-- MENU -->
-        {% if user.is_staff %}
-        <a href="{% url 'admin:index' %}">Admin</a>
-        <a href="{% url 'admin:blog_post_add' %}">Add post</a>
-        {% endif %}
-
-    {% endblock %}
-</div>
-    <div class="row">
-        <div class="col-sm-3 pull-right">
-            <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
-        </div>
-        <div class="col-sm-9">
-            <div id="container">
-
-            <div id="content">
-                {% block sub_content %} {% endblock %}
-            </div>
-            </div>        
+<div class="row">
+    <div class="col-sm-9">
+        <div class="blog-header text-align-center">My Blogs</div>
+    </div>
+    <div class="col-sm-3">
+        <div id="menu">
+            {% block nav-global %}
+                <!-- MENU -->
+                {% if user.is_staff %}
+                <a href="{% url 'admin:index' %}">Admin</a>
+                <a href="{% url 'admin:blog_post_add' %}">Add post</a>
+                {% endif %}
+            {% endblock %}
         </div>
     </div>
-    
+</div>
 
+<div class="row">
+    <div class="col-sm-3 pull-right">
+        <div id="sidebar"> {% block sidebar %} {% endblock %} </div>
+    </div>
+    <div class="col-sm-9">
+        <div id="container">
+
+        <div id="content">
+            {% block sub_content %} {% endblock %}
+        </div>
+        </div>        
+    </div>
+</div>
 {% endblock %}
 

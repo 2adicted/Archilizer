@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.core.mail import send_mail
 from django.db import models
 
 # Create your models here.
@@ -5,6 +7,8 @@ class Post(models.Model):
 	title = models.CharField(max_length=60)
 	body = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
+	tags = models.CharField(max_length=30)
+	category = models.CharField(max_length=30)
 
 	def __unicode__(self):
 		return self.title
@@ -17,3 +21,20 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return unicode("%s: %s" % (self.post, self.body[:60]))
+
+
+	
+	def save(self, *args, **kwargs):
+		"""Email when a comment is added."""
+		if "notify" in kwargs and kwargs["notify"] == True:
+			message = "Comment was added to '%s' by '%s': \n\n%s" % (self.post, self.author, self. body)
+
+			subject = 'Archilizer contact form'
+			from_email = settings.EMAIL_HOST_USER
+			to_email = from_email
+
+			send_mail("New comment added", message, from_email, [to_email])
+
+		if "notify" in kwargs: del kwargs["notify"]
+
+		super(Comment, self).save(*args, **kwargs)

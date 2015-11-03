@@ -13,18 +13,31 @@
 
 
 {% block sub_content %}
-{{ block.super }}
+<style type="text/css">
+    .panel{ 
+      position:absolute; 
+      width:100%;
+      height:100%;
+      top:0;
+      left: 0;
+      z-index: 1;
+      background-color: transparent;
+    }
+</style>
 <div class="main">
     <!-- Posts  -->
     {% for post in posts %}
-            <div class="box-blog">
-                <div class="title">{{ post.title }}</div>
-                <ul>
-                    <div class="time">{{ post.created }}</div>
-                    <div class="body">{{ post.body|linebreaks }}</div>
-                    <div class="commentlink"><a href="{% url 'blog-post' post.pk %}">Comments</a></div>
-                </ul>
-            </div>
+        <div class="box-blog " style="position:relative;">
+            <div class="title">{{ post.title }}</div>
+            <ul>
+                <div class="time">{{ post.created }}</div>
+                <div class="body">{{ post.body|linebreaks }}</div>
+                <div class="commentlink">Comments: {{ post.comment_set.count }}</div>
+            </ul>
+            <a href="{% url 'blog-post' post.pk %}">
+                <span class="panel"></span>
+            </a>
+        </div>
     {% endfor %}
 
     <!-- Next/Prev page links  -->
@@ -45,5 +58,6 @@
         </span>
     </div>
     {% endif %}
+</div>
 
 {% endblock %}
