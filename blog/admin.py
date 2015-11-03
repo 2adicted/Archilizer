@@ -5,7 +5,8 @@ from .models import Post, Comment
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
-	search_field = ['title']
+	search_field = ['title', 'created']
+	display_fields = ['title', 'created']
 
 admin.site.register(Post, PostAdmin)
 

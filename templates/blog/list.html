@@ -1,30 +1,35 @@
 {% extends "blog/blayout.html" %}
 
-{% block content %}
+{% block sidebar %}
+    <div id="sidebar" class="box-blog">
+    <h4>Monthly Archive</h4><br/>
+    {% for month in months %}
+    {% ifchanged month.0 %} {{ month.0 }} <br/> {% endifchanged %}
+        <a href="{% url 'blog-month' month.0 month.1 %}">{{ month.2 }}</a> <br/>
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+{% block sub_content %}
 {{ block.super }}
-<div class="blog-header">My Blogs</div>
 <div class="main">
     <!-- Posts  -->
-    <ul>
-        {% for post in posts.object_list %}
-        <div class="container blog-container box-shadow-content">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="title">{{ post.title }}</div>
-                    <ul>
-                        <div class="time">{{ post.created }}</div>
-                        <div class="body">{{ post.body|linebreaks }}</div>
-                        <div class="commentlink"><a href="{% url 'blog-post' post.pk %}">Comments</a></div>
-                    </ul>
-                </div>
+    {% for post in posts %}
+            <div class="box-blog">
+                <div class="title">{{ post.title }}</div>
+                <ul>
+                    <div class="time">{{ post.created }}</div>
+                    <div class="body">{{ post.body|linebreaks }}</div>
+                    <div class="commentlink"><a href="{% url 'blog-post' post.pk %}">Comments</a></div>
+                </ul>
             </div>
-        </div>
-        {% endfor %}
-    </ul>
+    {% endfor %}
 
     <!-- Next/Prev page links  -->
-    {% if posts.object_list and posts.paginator.num_pages > 1 %}
-    <div class="pagination" style="margin-top: 20px; margin-left: -20px; ">
+    {% if not archive and posts.object_list and posts.paginator.num_pages > 1 %}
+    <div class="pagination" style="margin-top: 20px;">
         <span class="step-links">
             {% if posts.has_previous %}
                 <a href= "?page={{ posts.previous_page_number }}">newer entries &lt;&lt; </a>
@@ -40,6 +45,5 @@
         </span>
     </div>
     {% endif %}
-</div>
 
 {% endblock %}
