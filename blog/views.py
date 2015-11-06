@@ -3,11 +3,12 @@ from calendar import month_name
 from django.core.context_processors import csrf
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms  import CommentForm
 # Create your views here.
 
@@ -33,20 +34,27 @@ def main(request):
 			"posts": posts, 
 		 	"user" : request.user,
 	 		"months" : mkmonth_lst(),
+	 		"categories": category_lst(),
 			})
 		)
+
+def category_lst():	
+	return Category.objects.annotate(num_posts=Count('posts')).order_by('-num_posts')
 
 def month(request, year, month):
 	"""Monthly archive."""
 	posts = Post.objects.filter(created__year=year, created__month=month)
+
 	return render(
 	request,
 	'blog/list.html',
 	context_instance = RequestContext(request,
 		{
+		"title": 'Blog by Time',
 		"posts" : posts,
 	 	"user": request.user,
 	 	"months" : mkmonth_lst(),
+ 		"categories": category_lst(),
 	 	"archive" : True,
 		})
 	)
@@ -69,7 +77,6 @@ def post(request, pk):
 	 	"user": request.user,
 		})
 	)
-
 
 def add_comment(request, pk):
 	""" Add a new comment. """
@@ -125,3 +132,38 @@ def delete_comment(request, post_pk, pk=None):
 			Comment.objects.get(pk=pk).delete()
 
 		return HttpResponseRedirect(reverse("blog-post", args=(post_pk,)))
+
+def category(request, categorySlug, pk):
+	"""Get specified category"""
+	posts = Post.objects.all().order_by('-created')
+	category_posts = []
+	for post in posts:
+		if post.categories.filter(slug=categorySlug):
+			category_posts.append(post)
+
+	"""Add pagination"""
+	pages = Paginator(category_posts, 5)
+
+	"""Get the category"""
+	category = Category.objects.filter(slug=categorySlug)[0]
+
+	"""Get the specified page"""
+	try:
+		returned_page = pages.page(pk)
+	except EmptyPage:
+		returned_page = pages.page(pages.num_pages)
+
+	"""Display all the posts"""
+	return render(
+	request,
+	'blog/category.html',
+	context_instance = RequestContext(request,
+		{
+		"title": 'Blog by Category',
+		"posts" : returned_page.object_list,
+		"page": returned_page,
+		"category": category, 
+	 	"months" : mkmonth_lst(),
+ 		"categories": category_lst(),
+		})
+	)

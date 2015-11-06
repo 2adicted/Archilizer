@@ -1,42 +1,31 @@
-{% extends "blog/blayout.html" %}
+{% extends "blog/bloglayout.html" %}
 
 {% block sidebar %}
-    <div id="sidebar" class="box-blog">
-    <h4>Monthly Archive</h4><br/>
-    {% for month in months %}
-    {% ifchanged month.0 %} {{ month.0 }} <br/> {% endifchanged %}
-        <a href="{% url 'blog-month' month.0 month.1 %}">{{ month.2 }}</a> <br/>
-    {% endfor %}
-    </div>
-
+{% include "blog/sidebar.html" %}
 {% endblock %}
 
 
 {% block sub_content %}
-<style type="text/css">
-    .panel{ 
-      position:absolute; 
-      width:100%;
-      height:100%;
-      top:0;
-      left: 0;
-      z-index: 1;
-      background-color: transparent;
-    }
-</style>
 <div class="main">
     <!-- Posts  -->
     {% for post in posts %}
-        <div class="box-blog " style="position:relative;">
-            <div class="title">{{ post.title }}</div>
-            <ul>
-                <div class="time">{{ post.created }}</div>
-                <div class="body">{{ post.body|linebreaks }}</div>
-                <div class="commentlink">Comments: {{ post.comment_set.count }}</div>
-            </ul>
-            <a href="{% url 'blog-post' post.pk %}">
-                <span class="panel"></span>
-            </a>
+        <div class="blog-post">
+            <div class="left-cell">
+                <div class="title">{{ post.title }}</div>
+                    <ul>
+                        <div class="bottom">   
+                            <div class="categories">{{ post.created|date:"F d"|upper }}</div>
+                            {% for category in post.categories.all %}
+                            <div class="categories">{{ category }}</div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                    <a href="{% url 'blog-post' post.pk %}">
+                        <span class="panel"></span>
+                    </a>
+            </div>
+            <div class="right-cell">
+            </div>
         </div>
     {% endfor %}
 

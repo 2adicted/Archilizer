@@ -19,17 +19,24 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
+    # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
+    url(r'^thankyou$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'newsletter.views.home', name='home'),
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    # downloads
+    url(r'^downloads/', 'download.views.download', name='downloads'),
+    # blog
     url(r'^blog/$', 'blog.views.main', name='blog'),
     url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),
     url(r'^blog/add_comment/(?P<pk>\d+)/$', 'blog.views.add_comment', name='blog-add-comment'),
     url(r'^blog/month/(\d+)/(\d+)/$', 'blog.views.month', name='blog-month'),
     url(r'^blog/delete_comment/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
     url(r'^blog/delete_comment/(\d+)/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
+    url(r'^blog/categories/(?P<categorySlug>\w+)/?$', 'blog.views.category', name='blog-category'),
+    url(r'^blog/categories/(?P<categorySlug>\w+)/(?P<pk>\d+)/?$', 'blog.views.category', name='blog-category-pk'),
 ]
 
 if settings.DEBUG:

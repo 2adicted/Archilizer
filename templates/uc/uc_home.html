@@ -1,0 +1,22 @@
+{% extends 'uc/uc_layout.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <div class="container">
+  <div class="space" style="margin-bottom: 12em;"></div>
+  <div class="row">
+	  <div class="col-sm-4 pull-right under-construction-panel">
+  			<h1 class="title">UNDER CONSTRUCTION</h1>
+  			<div class="space" style="margin-bottom: 2.5em;"></div>
+  			<h3 class="sub-title">We will tell you when.</h3>
+  			<div class="space" style="margin-bottom: 1.5em;"></div>
+			<form method="POST" action="{% url 'under_construction_subscribed' %}" class="narrow-select"> {% csrf_token %}
+				{{ form|crispy }}
+  			<div class="space" style="margin-bottom: 2em;"></div>
+				<input class="btn btn-default btn-sm" type="submit" value="Sign Up">
+			</form>		
+	  </div>
+  <div>
+  </div>
+{% endblock %}

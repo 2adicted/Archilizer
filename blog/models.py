@@ -1,18 +1,25 @@
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Post(models.Model):
 	title = models.CharField(max_length=60)
+	slug = models.SlugField(max_length=40, unique=True)
 	body = models.TextField()
-	created = models.DateTimeField(auto_now_add=True)
-	tags = models.CharField(max_length=30)
-	category = models.CharField(max_length=30)
+	created = models.DateTimeField(editable=True)
+	categories = models.ManyToManyField('Category', blank=True, through='CategoryToPost')
 
 	def __unicode__(self):
 		return self.title
-		
+
+	def save(self, *args, **kwargs):
+		"""On save, update timestamps"""
+		if not self.id:
+			self.created = timezone.now()
+		return super(Post, self).save(*args, **kwargs)
+
 class Comment(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	author = models.CharField(max_length=60)
@@ -38,3 +45,23 @@ class Comment(models.Model):
 		if "notify" in kwargs: del kwargs["notify"]
 
 		super(Comment, self).save(*args, **kwargs)
+
+class Category(models.Model):
+	title = models.CharField(max_length=200)
+	slug = models.SlugField(max_length=40, unique=True)
+	description = models.TextField()
+	posts = models.ManyToManyField('Post', blank=True, through='CategoryToPost')
+
+	class Meta:
+		verbose_name_plural = "Categories"
+
+	def __unicode__(self):
+		return self.title
+
+	def get_absolute_url(self):
+		return "/categories/%s/" % self.slug
+
+class CategoryToPost(models.Model):
+	post = models.ForeignKey(Post)
+	caregory = models.ForeignKey(Category)
+

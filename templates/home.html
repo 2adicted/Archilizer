@@ -2,25 +2,18 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-
-
 {% block head_title %} {{ block.super }} | {{ title }} {% endblock %}
-
 
 {% block jumbotron %}
 <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron box-shadow-content">
   		<div class="container">
 	      <div class="row">
-		      <div class="col-sm-6">
+		      <div class="col-sm-9">
 		        <h1>Archilizer</h1>
-		        <p class="lead">This project is about using code to make our life as architects easier. It focuses on BIM, Revit, Add-ins for Revit as well as generative stuff.</p>
-		        <p>
-		          <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>
-		        </p>	      	
-		      </div>
-		      <div class="col-sm-4 control-label pull-right">
-		      <img class="img-responsive" src='{% static "img/neuron-network.jpg" %}' style="max-height: 340px;"> 	
+		        {% include 'about_home.html' %}
+		        <br>
+		          <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>      	
 		      </div>  
 	      </div>    	
       	</div>
@@ -57,18 +50,18 @@
 	}
 </style>
 
-<div class="space" style="margin-bottom:10px;"></div>
 <div class="col-sm-4">
-	<i class="fa fa-envelope-o fa-3x" style="color:#fff"></i>
-	<h2 style="color:#FFF;"> Hello, stranger. </h2>
-	<form method="POST" action=""> {% csrf_token %}
-		{{ form|crispy }}
-		<input class="btn btn-default" type="submit" value="Sign Up">
-	</form>		
-    <br/>           
-    <p style="color:#e9e9e9; font-weight:lighter;"> Here you can subscribe to our mailing list. </p>
+	<div class="sign-up">
+		<i class="fa fa-envelope-o fa-3x" style="color:#fff"></i>
+		<h2 style="color:#FFF;"> Hello, stranger. </h2>
+		<form method="POST" action=""> {% csrf_token %}
+			{{ form|crispy }}
+			<input class="btn btn-default" type="submit" value="Sign Up">
+		</form>	      
+	</div>
 </div>
 </div>
+
 <div class="space" style="margin-bottom:20px;"></div>
 
 <div class="row featured-container" id="activity">

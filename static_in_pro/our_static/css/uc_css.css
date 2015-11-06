@@ -1,0 +1,40 @@
+.under-construction-panel{
+	background-color: rgba(0,0,0,0.58);
+	padding-bottom: 1.5em;
+	padding:1em;
+	width:320px;
+	height:310px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate( 10%, -50%);
+}
+.title{			
+	font-family: Calibri;
+	font-weight: 700;
+	font-size:31px;
+	margin-top: -0.2em;
+}
+.blog-title{			
+	font-family: Calibri;
+	font-weight: 700;
+	font-size:31px;
+	/*margin-top: -0.2em;*/
+}
+.sub-title{			
+	font-family: Calibri;
+	font-weight: 200;
+	font-size: 18px;
+}
+.narrow-select{
+	width:292px;
+}
+
+.centralized{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate( -50%, -50%);
+}

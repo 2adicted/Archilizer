@@ -14,7 +14,7 @@ def home(request):
 
 	if form.is_valid():
 		instance = form.save(commit=False)
-		full_name = forms.cleaned_data.get("full_name")
+		full_name = form.cleaned_data.get("full_name")
 		if not full_name:
 			full_name = "New full name"
 		instance.full_name = full_name
@@ -34,7 +34,6 @@ def home(request):
 
 def contact(request):
 	title = 'Contact Us'
-	text_align_true = True
 	form = ContactForm(request.POST or None)
 
 	if form.is_valid():
@@ -65,7 +64,6 @@ def contact(request):
 			{			
 			"form" : form,
 			"title" : title,
-			 "text_align_true" : text_align_true,
 			})
 		)
 
