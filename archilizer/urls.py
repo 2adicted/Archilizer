@@ -20,14 +20,18 @@ from django.contrib import admin
 
 urlpatterns = [
     # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
-    url(r'^thankyou$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
+    url(r'^downloads/thankyou/$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'newsletter.views.home', name='home'),
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    # training
+    url(r'^training/$', 'training.views.training', name='trainings'),
+    url(r'^training/(?P<pk>\d+)/$', 'training.views.module', name='module'),
     # downloads
-    url(r'^downloads/', 'download.views.download', name='downloads'),
+    url(r'^downloads/$', 'archilizer.views.under_construction', name='downloads'),
+    # url(r'^downloads/', 'download.views.download', name='downloads'),
     # blog
     url(r'^blog/$', 'blog.views.main', name='blog'),
     url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),

@@ -1,16 +1,19 @@
 {% extends 'layout.html' %}
+{% load staticfiles %}
 
 {% block head_title %} {{ block.super }} | About us {% endblock %}
 
 {% block content %}
+
 <div class="about-content">
 	<div class="row">
-		<div class="col-sm-9">
-			<div class="blog-header text-align-center blog-title">ARCHILIZER</div>
-		</div>	
-		<div class="col-sm-6">
+		<div class="col-sm-12"> 
+			<img src="{% static 'img/test/laptop.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h">
 
-		<div class="sub-title" style="font-size:48px;"> About Archilizer </div>
+			<div class="text-h" > About Archilizer </div>
+		</div>
+
+		<div class="col-sm-6">
 
 			<p class="about-p-special">At <strong>Archilizer</strong> we create value through saving time. <strong>Your time.</strong> We are here to support your Architectural ideas by tackling the complex challenges you face. We know <strong>BIM</strong>, Revit and how to make it simpler for you.
 			</p>
@@ -20,8 +23,10 @@
 		<h1> Who we are </h1>	
 
 			<p class="about-p">
-			<strong>Archilizer</strong> is the computationally oriented start-up of architect <strong>Deyan Nenov</strong>.<br>
-			<strong>Deyan Nenov</strong>: "I have always been passionate by computer science and its application in the field of Architecture. As an early adopter of BIM (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing."
+			<strong>Archilizer</strong> is the computationally oriented start-up of architect <strong>Deyan Nenov</strong>.</p>
+			<p class="about-p">
+			<i>
+			 "I have always been passionate by computer science and its application in the field of Architecture. As an early adopter of BIM (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing."</i>
 			</p>	
 			<p class="about-p">We are focused on creating and implementing robust solutions by developing custom algorithms with various application in the design process. We also engage in computational in nature design projects - we have won several competitions in urban prototyping and have exhibited in V&A London. 
 			</p>	

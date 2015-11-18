@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head_title %} {{ block.super }} | Training - {{ module.title }} {% endblock %}
+
+{% block content %}
+
+<div class="about-content">
+	<div class="row">
+		<div class="col-sm-12">
+		<br>
+			<h1> {{ module.title }} </h1>
+			<h3> {{ module.short_description }} </h3>
+			<p class="lead"> {{ module.description }} </p>
+		</div>
+		<div class="col-sm-6">
+			<p> <strong>Level:</strong> {{ module.level }} </p>
+			<p> <strong>Course price:</strong> {{ module.price }} </p>
+			<p> <strong>Number of participants:</strong> {{ module.attendants }} </p>
+			<p> <strong>Duration:</strong> {{ module.duration }} </p>
+			<p> {{ module.structure|linebreaks }} </p>
+		</div>		
+		<div class="col-sm-6">
+			<img class="img-responsive img-rounded box-shadow-content" src='/media/{{ module.image }}'>
+		</div>		
+		<div class="col-sm-12" style="margin-top: 2em;">
+			<p> <strong> Booking: </strong> Please, fill in <a href="{% url 'contact' %}">our contact form</a> and we will get in touch to discuss the details. Thank you.  </p>
+		</div>
+	</div>
+	<div class="row" style="margin-top:1.0em;">
+		<div class="col-xs-1"><h4><a href="{% url 'module' prev %}"><<<</a></h4></div>
+		<div class="col-xs-1 pull-right" style="text-align:right;"><h4><a href="{% url 'module' next %}">>>> </a></h4></div>
+	</div>
+	<div class="row" style="margin-top:1.0em;">
+		<p class="captions">*<i> Prices are based on a 4-6 hours daily sessions. </i></p>
+		<p class="captions">**<i> Images courtesy of ACME and Minories Team (Anna Czigler, Iria de la Pena, Thomas Su).</i></p>
+	</div>
+</div>
+
+{% endblock %}

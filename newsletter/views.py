@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
@@ -19,15 +20,14 @@ def home(request):
 			full_name = "New full name"
 		instance.full_name = full_name
 		instance.save()
-
-	# if form.is_valid():
+		return HttpResponseRedirect('')
 
 	return render(
 		request,
 		'home.html',
 		context_instance = RequestContext(request,
 			{
-			"title": "Thank you Sir/Madam",
+			"title": title,
 			"form" : form,
 			})
 		)

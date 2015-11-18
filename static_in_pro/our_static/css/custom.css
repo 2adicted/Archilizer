@@ -1,33 +1,175 @@
+@font-face {
+    font-family: CaviarDreams;
+    src: url('../fonts/CaviarDreams.ttf') format("truetype");    
+}
+
+
 html, body{
 	height:100%;
 }
 body{
     background-color: #F5F5F5;
 }
-.btn{
+.btn-margin{
     margin-top: 2em;
 }
+
+/* text formatting */
+h1, h2, h3, h4, h5{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: thin;  
+}
+p{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: thin;      
+}
+h1{
+    padding-bottom: 1em;
+}
+.h2-buttons{
+    font-size: 24px;
+    color: #545454;
+}
+.text-align-center{
+    text-align: center;
+}
+.front-title{
+    font-weight: 800;
+}
+.title{
+    font-size: 2em;
+}
+.sub-title{         
+    font-size: 18px;
+    padding-bottom: 1em;
+}
+
+
 /* layout */
 .wrapper{
+    position:relative;
 	min-height:82%;
 	height: auto !important;
 	height:100%;
 	margin: 0 auto -4em;
 	margin-bottom: 0px !important;
 }
-.footer{
-	border-top:solid 1px;
+.footer-border{
+	/*border-top:dashed;*/
+    border-width: 1px;
 	border-color: #E1E1E1;
+}
+.jumbotron{
+    background-color: #FFF;
+    min-height: calc(39.2vh - 80px);
+}
+.content{
+    min-height:400px;
+    height: 100%;
+    margin-bottom: 7em;
+}
+.sub-content: {
+    width:100%;
+    position: relative;
+}
+.featured-container{
+    background-color: #F5F5F5;
+    margin: auto;
+    width:auto;
+    padding: 1em 0 0 0;
+    /*border-top: solid 1px;*/
+    border-color: #E1E1E1;
+    text-align: center;
+}
+.box-shadow-content{
+    box-shadow: 0px 4px 15px rgba(40,40,40, 0.4);
+}
+/* general */
+a {
+    text-decoration: none !important;
+}
+.captions{
+    color:#141414;
+}
+.fa{
+    color:#858585;
+}
+.col-bombon{
+    position:relative;
+    /*background-color: #fff;*/
+    min-height: 16em;
+    height:100%;
+    margin: 0.5em;
+    padding: 1.5em 0.5em 0.5em 0.5em;
+    border-style: solid;
+    border-color: #E0E0E0;
+    border-width: 1px;
+    /*border-radius: .5em;*/
+    /*box-shadow: 0px 4px 15px rgba(40,40,40, 0.1);*/
+}
+.break-word {
+        word-wrap: break-word;
+}
+.bottom-container{    
+    margin: auto;
+    width:auto;
+    min-height: 10em;
+    height:100%;
+}
+.grey-container{    
+    background-color: #F5F5F5;
+}
+.gradient{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f5f5+0,ffffff+100 */
+    background: rgb(245,245,245); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+.lead{
 }
 /* home */
 .sign-up{
     margin: 70px 0em 1em 0em;
 }
 .about-home-p{
-    font-family: Calibri;
-    font-weight: thin;
-    font-size: 24px !important;
-    margin-bottom: 1em;
+    font-size: 20px !important;
+    font-weight: 300;
+    color:#CCCCCC;
+}
+.white{
+    font-family: CaviarDreams;
+    color:#fff;
+    font-weight: 600;
+}
+.middle{
+    position:absolute;
+    top:calc(50% - 0.7em);
+    transform: translate( 0%,-50%);    
+}
+.middle-right{
+    position:absolute;
+    top:calc(50% - 0.7em);
+    right:0;
+    transform: translate( 0%,-50%);    
+}
+.healthy{
+    min-height: 480px;
+    position:relative;
+/*    border:solid white;
+*/    margin-bottom: 2em;
+}
+.wrap{
+    position:fixed;
+    top:42em;
+}
+.static-pos{
+    position:relative;   
+    margin-bottom:0em;
 }
 /* contacts */
 .form-container{
@@ -85,6 +227,7 @@ body{
 .form-control{
     border-radius: 0 !important;
     border-style: none !important;
+    /*width:50em;*/
 }
 .panel{ 
   position:absolute; 
@@ -94,6 +237,11 @@ body{
   left: 0;
   z-index: 1;
   background-color: transparent;
+  
+border-style: solid;
+  border-color: #EBEBEB;
+  border-width: 1px;
+  border-spacing: 1em;
 }
 .categories{
     vertical-align: bottom;
@@ -137,33 +285,13 @@ body{
     transform: translate( -50%, 0%);
 }
 
-/* text formatting */
 
-.text-align-center{
-    text-align: center;
-}
-.title{
-    font-size: 2em;
-}
-.sub-title{         
-    font-family: Calibri;
-    font-weight: 200;
-    font-size: 18px;
-    padding-bottom: 1em;
-}
 
-h1, h2, h3, h4, h5{
-    font-family: Calibri;   
-}
-h1{
-    padding-bottom: 1em;
-}
 /* comments */
 .comment{
     margin-bottom: 3em;
 }
 .comment-author{    
-    font-family: Calibri;
     font-weight: bold;
     font-size: 14px;
     padding-bottom: 0.5em;
@@ -172,21 +300,37 @@ h1{
     margin: 1em 0;
 }
 .comment-time{    
-    font-family: Calibri;
     font-weight: bold;
     font-size: 14px;
     padding-bottom: 0.5em;
     color:#BDBDBD;
 }
 /* about */
+.text-h{
+    color:#fff;    
+    /*background-color: rgba(0,0,0,0.58);*/
+    font-family: CaviarDreams;
+    font-weight: 100;
+    font-size:36px; 
+    position:absolute;
+    left:0.8em;
+    top:2.2em;    
+}
+.about-h{
+    position:relative;
+    margin-top:2em;
+    margin-bottom: 4em;
+    width:100%;
+    /*font-size: 2em;*/
+    /*background-color: #fff;*/
+    /*padding:0.5em;*/
+    /*height:380px;*/
+}
 .about-p{
-    font-family: Calibri;
-    font-weight: thin;
-    font-size: 16px;
-    margin-bottom: 1em;
+    font-size: 19px;
+    margin-bottom: 1.5em;
 }
 .about-p-special{
-    font-family: Calibri;
     font-weight: 500;
     font-size: 24px;
     margin-bottom: 1em;
@@ -197,4 +341,32 @@ h1{
 .icons{
     margin-top: 1em;
 }
+/* training */
+.h-middle{
+    position:relative;
+    /*top:50%;*/
+    transform: translateY(0%);  
+}
+.training-p{
+    font-size: 16px;
+    margin-bottom: 0.1em;
+}
+.tint-green{
+    background-color: rgba(0 ,232 ,4 , 0.4);
+    padding-bottom: 1em;
+}
+.tint-amber{
+    background-color: rgba(252, 195, 8, 0.4);
+    padding-bottom: 1em;
+}
+.tint-blue{
+    background-color: rgba(30, 204, 252, 0.4);
+    padding-bottom: 1em;
+}
+.training{
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+    position:relative;
+}
+
 

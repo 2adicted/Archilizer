@@ -1,0 +1,142 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head_title %} {{ block.super }} | Training {% endblock %}
+
+{% block content %}
+<div class="about-content">
+	<div class="row">
+		<div class="col-sm-12">
+			<img src="{% static 'img/test/school.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h">
+
+			<div class="text-h"> Training </div>
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<h1> Training structure </h1>
+			<p class="lead">
+			We understand that all our customers are unique and we tailor our approach to acknowledge that. We'd love to meet you and discuss your backround, the scope of your work and your ambitions. We strive to make our services as personalized as possible, <a href="{% url 'contact' %}">give us a call</a> and we will arrange everything for you - your first consultation with us is always free. 
+			</p>
+			<br>
+			<p class="lead">
+			Our training services come in two main flavours - <strong> training </strong> and <strong> implementation </strong>. While it is not as clear-cut, individuals will tend to benefit more from attending one of our training programs, while at the level of an architecture practice we will be looking at ways to implement best practices and standards. 
+			</p>
+			<p class="lead">
+			<strong>Training</strong> is concerned with installing and enhancing your command of Revit. It can take the form of individual or group training sessions and is aimed at Architects who wish to pick up Revit quickly and effortlessly. In creating the best possible service for you, we will take into account factors such as your previous experience with Revit or similar BIM and/or CAD software packages, your aptitude of picking new material and perhaps your focus on a singular module of our training program (we look at you 'Parametric Components').
+			</p>
+			<p class="lead">
+			<strong>Implementation</strong> is a more practice-oriented service, although it can certainly be adapted to the needs of a single invididual. Training is still involved, however in an implementation procedure we will be involved in the creation of office Standards, Template Files and Documentation. Our approach can be based on existing office projects or projects in the pipeline. This allows your studio to retain 
+			</p>
+		</div>
+		<div class="col-sm-5">
+			<h2> Revit training</h2>	
+			<p class="about-p">
+			The aim of this course is to give attendees an in-depth understanding of BIM and Autodesk Revit. There are three levels that you can choose to attend - <a href="{% url 'module' 1 %}">Basic</a>, <a href="{% url 'module' 2 %}">Intermediate</a> and <a href="{% url 'module' 3 %}">Advanced</a>. The course is suitable for Architects and Architectural draftsmen with no to advanced knowledge of Revit.
+			<div class="row">
+				<div class="col-sm-5">
+				<ul>
+					<li> Interface </li>
+					<li> Geometry </li>
+					<li> Views and Sheets </li>
+					<li> Schedules </li>
+				</ul>
+				</div>		
+				<div class="col-sm-6">
+				<ul>
+					<li> Annotations </li>
+					<li> Rooms and Areas </li>
+					<li> Families </li>
+					<li> Adaptive Components </li>
+				</ul>
+				</div>	
+			</div>
+			</p>			
+		</div>			
+		<div class="col-sm-5 pull-right">
+			<h2> Revit implementation </h2>	
+			<p class="about-p">
+			If you are a small or a medium sized architecture practice in the UK, there are a lot of reasons to consider implementing BIM workflow. If so, we recommend going for our implementation service rather than our training programs. These are some of the services that will be included in our implementation program.
+			<ul>
+				<li> Training </li>
+				<li> Template Files </li>
+				<li> BIM Execution Plan </li>
+				<li> COBie files </li>
+			</ul>
+			</p>	
+		</div>
+
+		<div class="col-sm-12">				
+			<h2 style="margin-top:3em; margin-bottom:1em;"> Questions and Answers </h2>
+			<p class="lead"><strong>Why Revit?</strong></p>
+			<p class="lead">
+			First of all - why Revit? Revit is one of the several BIM tools available together with ArchiCAD, Bentley AECOsim, Digital Project and Vectorworks (suggestions are being made that SketchUp might be incorporating BIM functionality in the future). They are certainly all viable solutions, but <i>we think</i> that Autodesk Revit and Graphisoft ArchiCAD are the Coca Cola and Pepsi of the BIM World of today. As learning a new software is no trivial task and is a bit harder than switching from one soft drink to another, we recommend that you pick your favorite. There is an abundance of information out there - for example you can read Michael Kilkelly's informative <a href="http://archsmarter.com/which-architectural-software" target="_blank"> article</a>. 
+			</p>		
+			<p class="lead"><strong>Certificates</strong></p>
+			<p class="lead">
+			We will provide you with a certified statement expressing our confidence in your Revit capabilities. However, this should not be your primary focus. We teach substance and incentivise true learning. To complement this idea even further, we also give you our ongoing support.
+			</p>
+			<p class="lead"><strong>Support</strong></p>
+			<p class="lead">
+			After attending any of our training or implementation courses, you will be part of our support program, which allows you to contact us with any queries regarding Revit. Picking up a new skill can be hard and a minor glitch at the start of your journey will often cause an unproportional amount of stress. We believe we can remedy that with a timely intervension - just give us a call and we will be happy to prevent your meltdown. 
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block sub-content %}
+<h1 class="text-align-center"> Training Categories</h1>
+<p class="lead text-align-center"> Here you can check the different training programs that we offer.</p>
+
+<div class="row featured-container" id="activity">
+	<div class="container">
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <i class="fa fa-graduation-cap fa-3x"></i>
+	        <h2>Revit <br> 101</h2>
+	        <p class="lead">Learn Revit fundamentals</p>       
+            <a href="{% url 'module' 1 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	 
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <i class="fa fa-graduation-cap fa-3x"></i>
+	        <h2>Revit <br> Intermediate</h2>
+	        <p class="lead">Advanced course in Revit</p>  
+            <a href="{% url 'module' 2 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	      
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <i class="fa fa-graduation-cap fa-3x"></i>
+	        <h2>Revit <br> Bespoke</h2>
+	        <p class="lead">Mix & Match</p>        
+            <a href="{% url 'module' 3 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <i class="fa fa-graduation-cap fa-3x"></i>
+	        <h2>Revit <br> Implentation</h2>
+	        <p class="lead">We come to you</p>        
+            <a href="{% url 'module' 4 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	
+	    </div>
+	</div>
+</div>
+
+{% endblock %}
+
+<!-- 
+<div class="row">
+    <div class="col-sm-9">
+        <div class="blog-header text-align-center blog-title"> {% block topic %}ARCHILIZED{% endblock %} -->

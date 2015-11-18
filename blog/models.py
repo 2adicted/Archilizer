@@ -28,8 +28,6 @@ class Comment(models.Model):
 
 	def __unicode__(self):
 		return unicode("%s: %s" % (self.post, self.body[:60]))
-
-
 	
 	def save(self, *args, **kwargs):
 		"""Email when a comment is added."""
