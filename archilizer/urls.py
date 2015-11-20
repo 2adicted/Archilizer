@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'newsletter.views.home', name='home'),
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
+    url(r'^contact/thanks/$', 'newsletter.views.thanks', name='thanks'),
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     # training

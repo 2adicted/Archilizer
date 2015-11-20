@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block head_title %} {{ block.super }} | {{ title }} {% endblock %}
+{% block head_title %} {{ title }} {% endblock %}
 
 {% block jumbotron %}
 <!-- Main component for a primary marketing message or call to action -->
@@ -10,7 +10,7 @@
   		<div class="container">
 	      <div class="row">
 		      <div class="col-sm-6">
-		        <h1 class="front-title" style="transform: translate( 0%,40px);  ">Archilizer</h1>
+		        <h1 class="front-title" style="transform: translate( 0%,40px);">Archilizer</h1>
 		        <!-- {% include 'about_home.html' %}		         -->
 		        <!--   <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>    -->   	
 		      </div>  
@@ -18,29 +18,28 @@
       	</div>
       </div>
 {% endblock %}
-// <script>
-// {% block jquery %}
-// var wrap = $("#wrap");
 
-// $(window).scroll(function (event) {
-//     var scroll = $(window).scrollTop();
-//     // Do something
-//  if (scroll > 300) 
-//   {
-//     wrap.addClass("static-pos");
-//     // alert("test");
-//   } else {
-//     wrap.removeClass("static-pos");    
-//   }
-// });
-// {% endblock %}
-// </script>
-
+<script>
+{% block jquery %}
+   $(".scroll").click(function(event){
+         event.preventDefault();
+         //calculate destination place
+         var dest=0;
+         if($(this.hash).offset().top > $(document).height()-$(window).height()){
+              dest=$(document).height()-$(window).height() - 80;
+         }else{
+              dest=$(this.hash).offset().top - 80;
+         }
+         //go to destination
+         $('html,body').animate({scrollTop:dest}, 1000,'swing');
+     });
+{% endblock %}
+</script>
 
 {% block content %}
 
 <style>
-/*Custom style because of backgorund*/
+/* Custom style because of backgorund */
 	body{   
 	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
 	        center center fixed;
@@ -70,7 +69,7 @@
 		<span class="middle-right">
 			<span class="hvr-buzz-out">
 				<a href="{% url 'contact' %}">
-					<img src="{% static 'img/computer.svg' %}">
+					<img class='svg' id="fill" src="{% static 'img/computer.svg' %}" alt='contact us buzzing computer'>
 				</a>
 			</span>
 		</span>
@@ -79,13 +78,49 @@
 {% endblock %}
 
 {% block sub-content %}
+<div class="row featured-container">
+	<div class="col-sm-12">
+		<span class="text-align-center">
+			<a class="scroll" href="#we-do">
+				<div class="scroll-down">
+					<!-- <i class="fa fa-chevron-down"></i>			 -->
+				</div>
+			</a>
+			<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> WHAT WE DO </h2>
+		</span>
+		<div class="container">
+			<hr>
+		</div>
+	</div>
+	<div class="container default-container">
+		<div class="col-sm-6">
+			<h3 class="text-align-center" style="margin-bottom:0.8em;"> Training </h3> 
+			<p> We work with individuals as well as with architecture practices; whichever the case, we can provide you with our best <strong>Revit</strong> training and <strong>BIM</strong> implementation services. Our approach is based on understanding your unique requirements and we will adapt our ways in order to achieve the most fulfilling experience for you. </p>
+			<p> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring new skill. </p>
+			<br>
+		</div>
+		<div class="col-sm-6">
+			<h3 class="text-align-center" style="margin-bottom:0.8em;"> Development </h3> 
+			<p> If you didn't know that by now, we love coding! We develop custom tools to provide architects with really unique ways to achieve their specific goals. We have written interactive and playful <strong>Processing</strong> snippets, we have taken our prototypes out there using <strong>Arduino</strong> (Genuino, cough), we develop <strong>Revit Add-Ins</strong> using <strong>C#</strong> and the Revit API and we have also done all the work for this website using <strong>Python</strong> and the all-mighty <strong>Django</strong>. Whichever direction your project takes you, we are ready to follow.</p>
+			<br>
+		</div>
+	</div>
+</div>
 <div class="row featured-container" id="activity">
-<div class="empty" style="min-height:5em;"></div>
 	<div class="container">
+		<div class="col-sm-6">
+			<i class="fa fa-graduation-cap fa-2x" style="color:#8E8E8E;"></i>			
+		</div>
+		<div class="col-sm-6">
+			<i class="fa fa-gears fa-2x" style="color:#8E8E8E;"></i>
+		</div>
+	<div class="container" style="margin-top:8em;"><hr></div>
+
+	<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> RECENT ACTIVITY </h2>
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
 	        <h2 class="h2-buttons">Revit <br> 101</h2>
-	        <i class="fa fa-graduation-cap fa-3x"></i>    
+	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>    
             <a href="{% url 'module' 1 %}">
                 <span class="panel"></span>
             </a>	
@@ -94,7 +129,7 @@
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
 	        <h2 class="h2-buttons">Revit <br> Intermediate</h2>
-	        <i class="fa fa-graduation-cap fa-3x"></i>
+	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>
             <a href="{% url 'module' 2 %}">
                 <span class="panel"></span>
             </a>	
@@ -103,7 +138,7 @@
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
 	        <h2 class="h2-buttons">Revit <br> Bespoke</h2>
-	        <i class="fa fa-graduation-cap fa-3x"></i>   
+	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>   
             <a href="{% url 'module' 3 %}">
                 <span class="panel"></span>
             </a>	
@@ -111,40 +146,8 @@
 	    </div>
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
-	        <i class="fa fa-gears fa-3x"></i>
-	        <h2>This and that</h2>
-	        <p class="lead">This section is about ...</p>
-	        </div>
-	    </div>
-	</div>
-</div>
-<div class="row featured-container" id="activity">
-	<div class="container" style="margin-top:0.8em;">
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <i class="fa fa-gears fa-3x"></i>
-	        <h2>Revit Add-In</h2>
-	        <p class="lead">Automatic Dimensions</p>
-	        </div>
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <i class="fa fa-gears fa-3x"></i>
-	        <h2>This and that</h2>
-	        <p class="lead">This section is about ...</p>
-	        </div>
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <i class="fa fa-gears fa-3x"></i>
-	        <h2>This and that</h2>
-	        <p class="lead">This section is about ...</p>
-	        </div>
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
 	        <h2 class="h2-buttons">Revit <br> Implentation</h2>
-	        <i class="fa fa-graduation-cap fa-3x"></i> 
+	        <i class="fa fa-graduation-cap fa-3x fa-button"></i> 
             <a href="{% url 'module' 4 %}">
                 <span class="panel"></span>
             </a>	
@@ -152,13 +155,56 @@
 	    </div>
 	</div>
 </div>
+<div class="row featured-container" id="activity">
+	<div class="container" style="margin-top:0.8em;">
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <h2 class="h2-buttons"> {{ posts.1.title }} </h2>
+	        <i class="fa fa-book fa-3x fa-button"></i>    
+            <a href="{% url 'blog-post' 1 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	 
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <h2 class="h2-buttons">{{ posts.2.title }}</h2>
+	        <i class="fa fa-book fa-3x fa-button"></i>
+            <a href="{% url 'blog-post' 2 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	      
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <h2 class="h2-buttons">{{ posts.3.title }}</h2>
+	        <i class="fa fa-book fa-3x fa-button"></i>   
+            <a href="{% url 'blog-post' 3 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	
+	    </div>
+	    <div class="col-sm-3">
+	    	<div class="col-bombon">
+	        <h2 class="h2-buttons">{{ posts.4.title }}</h2>
+	        <i class="fa fa-book fa-3x fa-button"></i> 
+            <a href="{% url 'blog-post' 4 %}">
+                <span class="panel"></span>
+            </a>	
+	        </div>	
+	    </div>
+	</div>
+</div>
+
 <div class="row bottom-container grey-container">
+<div class="empty"></div>
 	<div class="container">
+	<hr>
 		<div class="col-sm-6 col-sm-offset-3">
 			<div class="sign-up text-center">
 			<h2><i class="fa fa-envelope-o fa-1x" style=""> </i>
 				Hello, stranger. </h2>
-				<p class="lead"> Subscribe to our newsletter here.</p>
+				<p class="lead"> You can subscribe to our newsletter here.</p>
 				<form method='POST' action='{% url "home" %}'>{% csrf_token %}
 <!-- 					<div class='form-group'>
          				<input type='text' class='form-control' name='full_name' placeholder='Name' />

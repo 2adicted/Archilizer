@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
+{% block head_title %} Contact Us {{ block.super }} {% endblock %}
+
 {% block content %}
 <div class="row">
 	<div class="col-sm-6">
@@ -9,8 +11,10 @@
 			<div class="form">
 			{% if title %}
 			<h1> {{title}}</h1>
+			<p> Please, contact us with your query. We will get back to you as soon as possible. </p>
+			<br>
 			{% endif %}
-			<form class= method="POST" action=""> {% csrf_token %}
+			<form method="POST" action=""> {% csrf_token %}
 				{{ form|crispy }}
 				<input class="btn btn-default" type="submit" value="Sign Up">
 			</form>

@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
 
-{% block head_title %} {{ block.super }} | Training {% endblock %}
+{% block head_title %} Training {{ block.super }} {% endblock %}
 
 {% block content %}
 <div class="about-content">
 	<div class="row">
 		<div class="col-sm-12">
-			<img src="{% static 'img/test/school.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h">
+			<img src="{% static 'img/test/school.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h" alt="training">
 
 			<div class="text-h"> Training </div>
 		</div>	
@@ -33,6 +33,8 @@
 			<h2> Revit training</h2>	
 			<p class="about-p">
 			The aim of this course is to give attendees an in-depth understanding of BIM and Autodesk Revit. There are three levels that you can choose to attend - <a href="{% url 'module' 1 %}">Basic</a>, <a href="{% url 'module' 2 %}">Intermediate</a> and <a href="{% url 'module' 3 %}">Advanced</a>. The course is suitable for Architects and Architectural draftsmen with no to advanced knowledge of Revit.
+			</p>	
+			<br>			
 			<div class="row">
 				<div class="col-sm-5">
 				<ul>
@@ -50,20 +52,19 @@
 					<li> Adaptive Components </li>
 				</ul>
 				</div>	
-			</div>
-			</p>			
+			</div>		
 		</div>			
 		<div class="col-sm-5 pull-right">
 			<h2> Revit implementation </h2>	
 			<p class="about-p">
 			If you are a small or a medium sized architecture practice in the UK, there are a lot of reasons to consider implementing BIM workflow. If so, we recommend going for our implementation service rather than our training programs. These are some of the services that will be included in our implementation program.
+			</p>	
 			<ul>
 				<li> Training </li>
 				<li> Template Files </li>
 				<li> BIM Execution Plan </li>
 				<li> COBie files </li>
 			</ul>
-			</p>	
 		</div>
 
 		<div class="col-sm-12">				
@@ -93,42 +94,42 @@
 	<div class="container">
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
-	        <i class="fa fa-graduation-cap fa-3x"></i>
-	        <h2>Revit <br> 101</h2>
-	        <p class="lead">Learn Revit fundamentals</p>       
-            <a href="{% url 'module' 1 %}">
-                <span class="panel"></span>
-            </a>	
+		        <h2 class="h2-buttons">Revit <br> 101</h2>
+		        <i class="fa fa-graduation-cap fa-3x"></i>
+		        <p class="captions">Learn Revit fundamentals</p>       
+	            <a href="{% url 'module' 1 %}">
+	                <span class="panel"></span>
+	            </a>	
 	        </div>	 
 	    </div>
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
-	        <i class="fa fa-graduation-cap fa-3x"></i>
-	        <h2>Revit <br> Intermediate</h2>
-	        <p class="lead">Advanced course in Revit</p>  
-            <a href="{% url 'module' 2 %}">
-                <span class="panel"></span>
-            </a>	
+		        <h2 class="h2-buttons">Revit <br> Intermediate</h2>
+		        <i class="fa fa-graduation-cap fa-3x"></i>
+		        <p class="captions">Advanced course in Revit</p>  
+	            <a href="{% url 'module' 2 %}">
+	                <span class="panel"></span>
+	            </a>	
 	        </div>	      
 	    </div>
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
-	        <i class="fa fa-graduation-cap fa-3x"></i>
-	        <h2>Revit <br> Bespoke</h2>
-	        <p class="lead">Mix & Match</p>        
-            <a href="{% url 'module' 3 %}">
-                <span class="panel"></span>
-            </a>	
+		        <h2 class="h2-buttons">Revit <br> Bespoke</h2>
+		        <i class="fa fa-graduation-cap fa-3x"></i>
+		        <p class="captions">Mix & Match</p>        
+	            <a href="{% url 'module' 3 %}">
+	                <span class="panel"></span>
+	            </a>	
 	        </div>	
 	    </div>
 	    <div class="col-sm-3">
 	    	<div class="col-bombon">
-	        <i class="fa fa-graduation-cap fa-3x"></i>
-	        <h2>Revit <br> Implentation</h2>
-	        <p class="lead">We come to you</p>        
-            <a href="{% url 'module' 4 %}">
-                <span class="panel"></span>
-            </a>	
+		        <h2 class="h2-buttons">Revit <br> Implentation</h2>
+		        <i class="fa fa-graduation-cap fa-3x"></i>
+		        <p class="captions">We come to you</p>        
+	            <a href="{% url 'module' 4 %}">
+	                <span class="panel"></span>
+	            </a>	
 	        </div>	
 	    </div>
 	</div>

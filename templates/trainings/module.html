@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
 
-{% block head_title %} {{ block.super }} | Training - {{ module.title }} {% endblock %}
+{% block head_title %}  | Revit Training: {{ module.title }} {{ block.super }} {% endblock %}
 
 {% block content %}
 
@@ -21,7 +21,7 @@
 			<p> {{ module.structure|linebreaks }} </p>
 		</div>		
 		<div class="col-sm-6">
-			<img class="img-responsive img-rounded box-shadow-content" src='/media/{{ module.image }}'>
+			<img class="img-responsive img-rounded box-shadow-content" src='{{ MEDIA_URL }}{{ module.image }}' alt='blog-post-image'>
 		</div>		
 		<div class="col-sm-12" style="margin-top: 2em;">
 			<p> <strong> Booking: </strong> Please, fill in <a href="{% url 'contact' %}">our contact form</a> and we will get in touch to discuss the details. Thank you.  </p>

@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 {% load staticfiles %}
 
-{% block head_title %} {{ block.super }} | {{ title }} {% endblock %}
+{% block head_title %} {{ title }} {{ block.super }} {% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-            <img src="{% static 'img/test/book.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h">
+            <img src="{% static 'img/test/book.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h" alt="blog">
 
             <!-- <div class="text-h"> Training </div> -->
         <div class="text-h "> {% block topic %}Blog{% endblock %}</div>

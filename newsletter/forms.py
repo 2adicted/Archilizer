@@ -23,14 +23,12 @@ class SignUpForm(forms.ModelForm):
 
 class ContactForm(forms.Form):
 	full_name = forms.CharField(required=True)
-	email = forms.EmailField()
-	message = forms.CharField()
+	email = forms.EmailField(required=True)
+	message = forms.CharField(max_length=500, required=True)
 
 	def clean_email(self):
 		email = self.cleaned_data.get('email')		
 		email_base, provider = email.split("@")
 		domain, extension = provider.split(".")
 
-		if not extension == "edu":
-			raise forms.ValidationError("Please college stuff..")
 		return email

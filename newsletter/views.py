@@ -1,14 +1,19 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
 from .forms import SignUpForm, ContactForm
+from blog.models import Post
 
 # Create your views here.
 def home(request):
-	title = "Welcome"
+	title = "Revit Training | BIM Consultancy | Revit Plugins & Custom Tools "
+
+	#add blog-posts	
+	posts = Post.objects.all().order_by("-created")
 
 	#add form
 	form = SignUpForm(request.POST or None)
@@ -29,6 +34,7 @@ def home(request):
 			{
 			"title": title,
 			"form" : form,
+			"posts" : posts,
 			})
 		)
 
@@ -57,12 +63,26 @@ def contact(request):
 			[to_email], 
 			fail_silently=False)
 
+		return HttpResponseRedirect(reverse('thanks'))
+
 	return render(
 		request,
 		'forms.html',
 		context_instance = RequestContext(request,
 			{			
 			"form" : form,
+			"title" : title,
+			})
+		)
+
+def thanks(request):
+	title = 'Thank you'
+
+	return render(
+		request,
+		'thanks.html',
+		context_instance = RequestContext(request,
+			{			
 			"title" : title,
 			})
 		)
