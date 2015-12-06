@@ -7,27 +7,26 @@
 {% block topic %} {{ category.title }} {% endblock %}
 
 {% block sub_content %}
-<div class="main">
+<div class="row">
     <!-- Posts  -->
     {% if posts %}
         {% for post in posts %}
-            <div class="blog-post">
-                <div class="left-cell">
-                    <div class="title">{{ post.title }}</div>
-                        <ul>
-                            <div class="bottom">   
-                            <div class="categories">{{ post.created|date:"F d"|upper }}</div>
-                            {% for category in post.categories.all %}
-                            <div class="categories">{{ category }}</div>
-                            {% endfor %}
-                        </div>
-                        </ul>
-                        <a href="{% url 'blog-post' post.pk %}">
-                            <span class="panel"></span>
-                        </a>
-                </div>
-            <div class="right-cell">
-            </div>
+        <div class="col-sm-4">
+             <div class="blog-post">
+            <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover" >
+            <div class="title"><h3 class="h3-blog-post-title">{{ post.title }}</h3></div>
+                <ul>
+                    <div class="bottom">   
+                        <div class="categories">{{ post.created|date:"F d"|upper }}</div>
+                        {% for category in post.categories.all %}
+                        <div class="categories">{{ category }}</div>
+                        {% endfor %}
+                    </div>
+                </ul>
+                <a href="{% url 'blog-post' post.pk %}">
+                    <span class="panel"></span>
+                </a>
+        </div>
         </div>
         {{ post.text }}
     {% endfor %}

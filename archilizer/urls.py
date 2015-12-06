@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^blog/delete_comment/(\d+)/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
     url(r'^blog/categories/(?P<categorySlug>\w+)/?$', 'blog.views.category', name='blog-category'),
     url(r'^blog/categories/(?P<categorySlug>\w+)/(?P<pk>\d+)/?$', 'blog.views.category', name='blog-category-pk'),
+    # tinymce    
+    url(r'^tinymce/', include('tinymce.urls')),   
 ]
 
 if settings.DEBUG:
