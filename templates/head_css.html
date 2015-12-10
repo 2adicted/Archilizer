@@ -27,3 +27,15 @@
 <!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
+<!-- Django-Tinymce -->
+<script type="text/javascript" src="{% static "tiny_mce/tiny_mce.js" %}"></script>
+
+<script type="text/javascript" src="{% static "tiny_mce/textareas.js" %}"></script>
+
+<script type="text/javascript">
+        tinyMCE.init({
+                mode: "textareas",
+                theme: "advanced"
+        });
+</script>
+

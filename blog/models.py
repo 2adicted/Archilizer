@@ -4,9 +4,9 @@ from django.core.mail import send_mail
 from django.db import models
 from django.utils import timezone
 
+from cStringIO import StringIO
 from tinymce import models as tinymce_models
 from PIL import Image
-from cStringIO import StringIO
 
 import image, os
 

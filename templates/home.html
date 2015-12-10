@@ -1,4 +1,4 @@
- {% extends 'layout.html' %}
+{% extends 'layout.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
@@ -10,7 +10,7 @@
   		<div class="container">
 	      <div class="row">
 		      <div class="col-sm-6">
-		        <h1 class="front-title" style="transform: translate( 0%,40px);">Archilizer</h1>
+		        <h1 class="front-title">Archilizer</h1>
 		        <!-- {% include 'about_home.html' %}		         -->
 		        <!--   <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>    -->   	
 		      </div>  
@@ -37,7 +37,6 @@
 </script>
 
 {% block content %}
-
 <style>
 /* Custom style because of backgorund */
 	body{   
@@ -56,7 +55,7 @@
 <div class="row">
 	<div class="col-md-6 healthy">
 		<span class="middle">
-			<h2 class="white"> WE love COMPUTATION AND WE ARE NOT AFRAIND TO USE IT </h2>
+			<h2 class="white"> WE love COMPUTATION AND WE ARE NOT AFRAID TO USE IT </h2>
 			<br>
 			<p class="about-home-p">
 			 We do <strong>BIM</strong>, <strong>Revit</strong> and solve time-consuming problems in creative, computational ways.  We have a passion for novelty and sharing our knowledge with others.
@@ -79,125 +78,83 @@
 
 {% block sub-content %}
 <div class="row featured-container">
-	<div class="col-sm-12">
-		<span class="text-align-center">
+	<div class="container default-container">
+		<div class="col-sm-12">
 			<a class="scroll" href="#we-do">
-				<div class="scroll-down">
-					<!-- <i class="fa fa-chevron-down"></i>			 -->
-				</div>
-			</a>
+				<div class="scroll-down"></div>
+			</a>	
+		</div>
+	</div>
+	<div class="col-xl-12">
+		<span class="text-align-center">			
 			<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> WHAT WE DO </h2>
 		</span>
 		<div class="container">
 			<hr>
 		</div>
 	</div>
-	<div class="container default-container">
-		<div class="col-sm-6">
-			<h3 class="text-align-center" style="margin-bottom:0.8em;"> Training </h3> 
+	<div class="container default-container">	
+		<div class="col-sm-4">
+			<h3 class="h3-title text-align-center"> BIM Management </h3> 
+			<p> <strong>Building Information Modelling</strong> is not the future of our industry anymore. It is the present of it. Our mission is to help architecture studios make the transition to the world of <strong>BIM</strong> faster, efficient and actually fulfilling.</p>
+			<p>
+			We are uniquely equipt to slot in and out of your existing workflow, adapting it to the set of BIM requirements you are facing. Feel free to focus on creating some great Design, as we take care of the our favorite part - BIM. 
+			</p>
+			<br>
+			<i class="fa fa-group fa-2x fa-center"></i>
+		</div>		
+		<div class="col-sm-4">
+			<h3 class="h3-title text-align-center"> Training </h3> 
 			<p> We work with individuals as well as with architecture practices; whichever the case, we can provide you with our best <strong>Revit</strong> training and <strong>BIM</strong> implementation services. Our approach is based on understanding your unique requirements and we will adapt our ways in order to achieve the most fulfilling experience for you. </p>
 			<p> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring new skill. </p>
 			<br>
+			<i class="fa fa-graduation-cap fa-2x fa-center"></i>	
 		</div>
-		<div class="col-sm-6">
-			<h3 class="text-align-center" style="margin-bottom:0.8em;"> Development </h3> 
+		<div class="col-sm-4">
+			<h3 class="h3-title text-align-center"> Development </h3> 
 			<p> If you didn't know that by now, we love coding! We develop custom tools to provide architects with really unique ways to achieve their specific goals. We have written interactive and playful <strong>Processing</strong> snippets, we have taken our prototypes out there using <strong>Arduino</strong> (Genuino, cough), we develop <strong>Revit Add-Ins</strong> using <strong>C#</strong> and the Revit API and we have also done all the work for this website using <strong>Python</strong> and the all-mighty <strong>Django</strong>. Whichever direction your project takes you, we are ready to follow.</p>
 			<br>
+			<i class="fa fa-cogs fa-2x fa-center"></i>
 		</div>
 	</div>
+	<div class="container" style="margin-botom:8em;"><hr></div>
 </div>
+
 <div class="row featured-container" id="activity">
 	<div class="container">
-		<div class="col-sm-6">
-			<i class="fa fa-graduation-cap fa-2x" style="color:#8E8E8E;"></i>			
-		</div>
-		<div class="col-sm-6">
-			<i class="fa fa-gears fa-2x" style="color:#8E8E8E;"></i>
-		</div>
-	<div class="container" style="margin-top:8em;"><hr></div>
-
 	<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> RECENT ACTIVITY </h2>
-	    <div class="col-sm-3">
+
+
+    <!-- Posts -->
+    {% for post in posts %}
+    <div class="col-sm-4">
 	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">Revit <br> 101</h2>
-	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>    
-            <a href="{% url 'module' 1 %}">
+    		<img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover">
+	        <h2 class="h2-buttons">{{ post.title }}</h2>
+            <a href="{% url 'blog-post' post.pk %}">
                 <span class="panel"></span>
             </a>	
 	        </div>	 
 	    </div>
-	    <div class="col-sm-3">
+    {% endfor %}
+    <!-- Services  -->
+    {% for service in services %}
+    <div class="col-sm-4">
 	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">Revit <br> Intermediate</h2>
-	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>
-            <a href="{% url 'module' 2 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	      
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">Revit <br> Bespoke</h2>
-	        <i class="fa fa-graduation-cap fa-3x fa-button"></i>   
-            <a href="{% url 'module' 3 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">Revit <br> Implentation</h2>
-	        <i class="fa fa-graduation-cap fa-3x fa-button"></i> 
-            <a href="{% url 'module' 4 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	
-	    </div>
-	</div>
-</div>
-<div class="row featured-container" id="activity">
-	<div class="container" style="margin-top:0.8em;">
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons"> {{ posts.1.title }} </h2>
-	        <i class="fa fa-book fa-3x fa-button"></i>    
-            <a href="{% url 'blog-post' 1 %}">
+    		<img  src='{{ MEDIA_URL }}{{ service.thumb_image }}' alt='image for particular blog post' class="cover">
+	        <h2 class="h2-buttons">{{ service.title }}</h2> 
+            <a href="{% url 'module' service.pk %}">
                 <span class="panel"></span>
             </a>	
 	        </div>	 
 	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">{{ posts.2.title }}</h2>
-	        <i class="fa fa-book fa-3x fa-button"></i>
-            <a href="{% url 'blog-post' 2 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	      
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">{{ posts.3.title }}</h2>
-	        <i class="fa fa-book fa-3x fa-button"></i>   
-            <a href="{% url 'blog-post' 3 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	
-	    </div>
-	    <div class="col-sm-3">
-	    	<div class="col-bombon">
-	        <h2 class="h2-buttons">{{ posts.4.title }}</h2>
-	        <i class="fa fa-book fa-3x fa-button"></i> 
-            <a href="{% url 'blog-post' 4 %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	
-	    </div>
-	</div>
+    {% endfor %}
+
+	    
+<div class="empty"></div>
 </div>
 
 <div class="row bottom-container grey-container">
-<div class="empty"></div>
 	<div class="container">
 	<hr>
 		<div class="col-sm-6 col-sm-offset-3">
@@ -219,6 +176,19 @@
 		</div>
 	</div>
 </div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71281024-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
 {% endblock %}
 <!-- 
 <form class='navbar-form navbar-right' method='POST' action='{% url "auth_login" %}'> {% csrf_token %}

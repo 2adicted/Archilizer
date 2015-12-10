@@ -7,13 +7,17 @@ from django.template import RequestContext
 
 from .forms import SignUpForm, ContactForm
 from blog.models import Post
+from training.models import TrainingModule
 
 # Create your views here.
 def home(request):
 	title = "Revit Training | BIM Consultancy | Revit Plugins & Custom Tools "
 
 	#add blog-posts	
-	posts = Post.objects.all().order_by("-created")
+	posts = Post.objects.all().order_by("-created")[:3]
+
+	#add services (have to rename them)
+	services = TrainingModule.objects.all()[:3]
 
 	#add form
 	form = SignUpForm(request.POST or None)
@@ -35,6 +39,7 @@ def home(request):
 			"title": title,
 			"form" : form,
 			"posts" : posts,
+			"services" : services,
 			})
 		)
 
