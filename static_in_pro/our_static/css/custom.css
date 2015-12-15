@@ -1,3 +1,13 @@
+/* COLOR SCHEME */
+/* PINK: #FC4270  */ 
+/* dark PINK:; #61192B */
+/* light GREY1: #F5F5F5 */
+/* light GREY2: #E1E1E1 */
+/* medium GREY: #8E8E8E */
+/* almost BLACK: #141414 */
+/* light GREY1: #F6F6F6 */
+/* light GREY2: #EDEDED */
+
 @font-face {
     font-family: CaviarDreams;
     src: url('../fonts/CaviarDreams.ttf') format("truetype");    
@@ -13,11 +23,20 @@ body{
 .btn-margin{
     margin-top: 2em;
 }
-
 /* text formatting */
-h1, h2, h3, h4, h5{
+h1, h4, h5{
     font-family: 'Open Sans', sans-serif;
     font-weight: thin;  
+}
+h2 {    
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;  
+}
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: medium;    
+    font-size: 14px;  
+    text-transform: uppercase;
 }
 p{
     font-family: 'Open Sans', sans-serif;
@@ -27,7 +46,8 @@ p{
 }
 a{
     font-family: 'Open Sans', sans-serif;
-    font-weight: 400;      
+    font-weight: 400;    
+    font-size: 12px;  
 }
 ul{
     font-family: 'Open Sans', sans-serif;
@@ -37,14 +57,17 @@ h1{
     padding-bottom: 1em;
 }
 strong {
-    color:#777777;
+    color:#8E8E8E;
+}
+.strong-light {
+    color:#FC4270;
 }
 .h2-buttons{
     font-size: 24px;
-    font-weight: bold;
-    color:white;
+    font-weight: 100;
+    color:#FC4270;
     position:absolute;    
-    top:calc(50% - 0.7em);
+    top:calc(50% - 20px);
     left:50%;
     transform: translate(-50%, -50%);
 }
@@ -58,14 +81,19 @@ strong {
     top:35%;
     transform: translateY(-50%);
 }
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
 .text-align-center{
     text-align: center;
 }
 .front-title{
-    position:absolute;
     font-weight: 800;
     font-size:52px !important;
-    transform: translate( 0%,95%);"
 }
 .title{
     position:absolute;
@@ -82,8 +110,6 @@ strong {
 }
 .text-h{
     color:#fff;    
-    /*background-color: rgba(0,0,0,0.58);*/
-    /*font-family: CaviarDreams;*/
     font-weight: 800;
     font-size:24px; 
     position:absolute;
@@ -97,10 +123,13 @@ strong {
     width:100%;
     height: 50px;
     text-align: center;
-    color:#8E8E8E;
+    color:#FC4270;
 }
-
-
+.fa-vertical-center{
+    position: relative;
+    top:0;
+    transform: translateY(calc(100% + 15px));    
+}
 /* layout */
 .wrapper{
     position:relative;
@@ -129,7 +158,7 @@ strong {
     position: relative;
 }
 .featured-container{
-    background-color: #F5F5F5;
+    background-color: #FFFFFF;
     margin: auto;
     width:auto;
     padding: 1em 0 0 0;
@@ -159,6 +188,7 @@ a {
 }
 .bottom-container{    
     margin: auto;
+    padding-top:3em;
     width:auto;
     min-height: 10em;
     height:100%;
@@ -167,7 +197,7 @@ a {
     background-color: #F5F5F5;
 }
 .gradient{
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f5f5+0,ffffff+100 */
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f5f5+0,ffffff+100 */
     background: rgb(245,245,245); /* Old browsers */
     background: -moz-linear-gradient(top,  rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
@@ -186,14 +216,19 @@ a {
     margin: 70px 0em 1em 0em;
 }
 .about-home-p{
-    font-size: 20px !important;
-    font-weight: 300;
-    color:#CCCCCC;
+    font-size: 16px !important;
+    color:#E1E1E1;
 }
 .white{
-    font-family: CaviarDreams;
+    /*font-family: CaviarDreams, Helvetica, Arial-Narrow;*/
+    font-family: 'Roboto', sans-serif;
     color:#fff;
-    font-weight: 600;
+    font-weight: 300;
+    line-height: 150%;
+    font-size: 2.8em;
+    /*line-height: 40px;*/
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 .middle{
     position:absolute;
@@ -207,26 +242,21 @@ a {
     transform: translate( 0%,-50%);    
 }
 .healthy{
-    min-height: 480px;
+    min-height: 569px;
     position:relative;
     margin-bottom: 2em;
 }
 .scroll-down{
     font-size: 12px;
-    /*background-color: #CACACA;*/
     background-color: auto;
     width: 40px;
     height: 40px;
     text-align: center;
     border-radius: 50%;
     position: absolute;
-    top:4%;
+    top:0;
     left: 50%;
     margin-left: -20px;
-    border:inset;
-    border-width: 2px;
-    border-color: #EBEBEB;
-    /*transition: 0.2s;*/
 }
 .scroll-down:hover{
     opacity: 0.5; /* css standard */
@@ -238,6 +268,23 @@ a {
 }
 .empty{
     margin-top: 6em;
+}
+.round{
+    /*position:relative;*/
+    /*left:0;*/
+    display: table;
+    margin: 0 auto;
+    margin-top: 30px;
+    /*transform: translate(90px,0);*/
+    width: 196px;
+    height: 196px;
+    border-radius: 100%;    
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-width: 5px;
+    background-color: #E1E1E1;    
+    box-shadow: 0px 4px 15px rgba(40,40,40, 0.4);
+    overflow: hidden;
 }
 /* contacts */
 .form-container{
@@ -252,16 +299,15 @@ a {
 .rounded_corners{
     border-style: solid;
     border-width: 1px;
-    border-color: #E8E8E8;
+    border-color: #E1E1E1;
     border-radius: 5px
 }
 .blog-container{
-/*    background-color: #FAFAFA;*/
     padding: 1em;
     margin-bottom: 2em;
 }
 .time{
-    color: #828282;
+    color: #8E8E8E;
     padding: 1em 0 1em 0;
 }
 .blog-header{
@@ -303,41 +349,46 @@ a {
 }
 .col-bombon{
     position:relative;
-    /*background-color: #fff;*/=
-    min-height:369px;
+    min-height:209px;
     min-width:339px;
-    height:369px;
-    width:339px;
-    margin: 0.5em;
-    padding: 1.5em 0.5em 0.5em 0.5em;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     border-style: solid;
-    border-color: #E0E0E0;
-    border-width: 1px;
-    background-color: rgba(255,255,255,1);
-
-    color: rgba(0,0,0,0.6);
+    border-color: #EDEDED;
+    border-width: 10px;
+    background-color: rgba(1,2,12,1);
 
     overflow: hidden;
 }
 .col-bombon:hover .cover{
-    -webkit-filter: grayscale(1) opacity(.8) brightness(10%);
-    filter: grayscale(1) opacity(.8 ) brightness(10%);
+    -webkit-filter: grayscale(1) opacity(.3) brightness(50%);
+    filter: grayscale(1) opacity(.3) brightness(50%);
 
     transition: all .5s ease-out;
     -moz-transition: all .5s ease-out;
     -webkit-transition: all .5s ease-out;
     -o-transition: all .5s ease-out;
 }
+.grid{
+    padding: 2px !important;
+}
+.holder{
+    margin-top:2em;
+    min-height: 200px;
+}
 .cover{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    -webkit-filter: grayscale(1) opacity(.9) brightness(120%);
-    filter: grayscale(1) opacity(.9) brightness(120%);
+    -webkit-filter: grayscale(1) opacity(.8) brightness(120%);
+    filter: grayscale(1) opacity(.8) brightness(120%);
 
     position: absolute;
-    transform: translate(calc(-50%), calc(-50% + 160px));
+    transform: translate(calc(-50%), calc(-50% + 100px));
+    width:100%;
+    height:auto;
 }
 .fa-button{
     color:white;
@@ -414,7 +465,7 @@ a {
     font-weight: bold;
     font-size: 14px;
     padding-bottom: 0.5em;
-    color:#BDBDBD;
+    color:#8E8E8E;
 }
 /* about */
 .about-h{
@@ -422,10 +473,6 @@ a {
     margin-top:2em;
     margin-bottom: 4em;
     width:100%;
-    /*font-size: 2em;*/
-    /*background-color: #fff;*/
-    /*padding:0.5em;*/
-    /*height:380px;*/
 }
 .about-p{
     font-size: 14px;
@@ -453,21 +500,13 @@ a {
     font-size: 16px;
     margin-bottom: 0.1em;
 }
-.tint-green{
-    background-color: rgba(0 ,232 ,4 , 0.4);
-    padding-bottom: 1em;
-}
-.tint-amber{
-    background-color: rgba(252, 195, 8, 0.4);
-    padding-bottom: 1em;
-}
-.tint-blue{
-    background-color: rgba(30, 204, 252, 0.4);
-    padding-bottom: 1em;
-}
 .training{
     margin-bottom: 1.5em;
     padding-left: 1.5em;
     position:relative;
 }
 
+/* footer */
+.short{
+    background-color: #FFFFFF;
+}

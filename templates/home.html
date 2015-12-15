@@ -4,16 +4,16 @@
 
 {% block head_title %} {{ title }} {% endblock %}
 
-{% block jumbotron %}
+{% block jumbotron_not %}
 <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron box-shadow-content">
+      <div class="jumbotron box-shadow-content vertical-center">
   		<div class="container">
 	      <div class="row">
 		      <div class="col-sm-6">
 		        <h1 class="front-title">Archilizer</h1>
 		        <!-- {% include 'about_home.html' %}		         -->
 		        <!--   <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>    -->   	
-		      </div>  
+		      </div> 
 	      </div>    	
       	</div>
       </div>
@@ -55,12 +55,12 @@
 <div class="row">
 	<div class="col-md-6 healthy">
 		<span class="middle">
-			<h2 class="white"> WE love COMPUTATION AND WE ARE NOT AFRAID TO USE IT </h2>
+			<h2 class="white"> BIM Management, Revit Training and Development </h2>
 			<br>
 			<p class="about-home-p">
-			 We do <strong>BIM</strong>, <strong>Revit</strong> and solve time-consuming problems in creative, computational ways.  We have a passion for novelty and sharing our knowledge with others.
+			 We do <strong class="strong-light">BIM</strong>, <strong class="strong-light">Revit</strong> and solve time-consuming problems in creative, computational ways.  We have a passion for novelty and sharing our knowledge with others.
 			 <br><br>
-			 Contact us if you want to use our training or development services. We'd <strong>love</strong> to help!
+			 Contact us if you want to use our training or development services. We'd love to help!
 			</p>	
 		</span>
 	</div>
@@ -78,85 +78,90 @@
 
 {% block sub-content %}
 <div class="row featured-container">
+	<div class="col-xl-12">
+		<span class="text-align-center">			
+			<h2 style="margin-top:0.5em; margin-bottom: 0.5em;" id="we-do"> WHAT WE DO </h2>
+		</span>
 	<div class="container default-container">
 		<div class="col-sm-12">
 			<a class="scroll" href="#we-do">
-				<div class="scroll-down"></div>
+				<div class="scroll-down"><i class="fa fa-caret-down fa-4x fa-center"></i></div>
 			</a>	
 		</div>
 	</div>
-	<div class="col-xl-12">
-		<span class="text-align-center">			
-			<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> WHAT WE DO </h2>
-		</span>
 		<div class="container">
 			<hr>
 		</div>
 	</div>
 	<div class="container default-container">	
 		<div class="col-sm-4">
-			<h3 class="h3-title text-align-center"> BIM Management </h3> 
-			<p> <strong>Building Information Modelling</strong> is not the future of our industry anymore. It is the present of it. Our mission is to help architecture studios make the transition to the world of <strong>BIM</strong> faster, efficient and actually fulfilling.</p>
-			<p>
-			We are uniquely equipt to slot in and out of your existing workflow, adapting it to the set of BIM requirements you are facing. Feel free to focus on creating some great Design, as we take care of the our favorite part - BIM. 
+			<h3 class="text-align-center"> BIM Management </h3> 
+			<div class="round">
+			<i class="fa fa-group fa-2x fa-center fa-vertical-center"></i>
+			</div>
+			<div class="holder">
+			<p class="text-align-center">
+			We are uniquely equipt to slot in and out of your existing workflow, adapting it to the set of BIM requirements you are facing. Feel free to focus on creating some great Design, as we take on our favorite part - BIM. 
 			</p>
-			<br>
-			<i class="fa fa-group fa-2x fa-center"></i>
+			</div>
 		</div>		
 		<div class="col-sm-4">
-			<h3 class="h3-title text-align-center"> Training </h3> 
-			<p> We work with individuals as well as with architecture practices; whichever the case, we can provide you with our best <strong>Revit</strong> training and <strong>BIM</strong> implementation services. Our approach is based on understanding your unique requirements and we will adapt our ways in order to achieve the most fulfilling experience for you. </p>
-			<p> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring new skill. </p>
-			<br>
-			<i class="fa fa-graduation-cap fa-2x fa-center"></i>	
+			<h3 class="text-align-center"> Training </h3> 	
+			<div class="round">
+			<i class="fa fa-graduation-cap fa-2x fa-center fa-vertical-center"></i>
+			</div>
+			<div class="holder">
+			<p class="text-align-center"> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring new skill. </p>
+			</div>
 		</div>
 		<div class="col-sm-4">
-			<h3 class="h3-title text-align-center"> Development </h3> 
-			<p> If you didn't know that by now, we love coding! We develop custom tools to provide architects with really unique ways to achieve their specific goals. We have written interactive and playful <strong>Processing</strong> snippets, we have taken our prototypes out there using <strong>Arduino</strong> (Genuino, cough), we develop <strong>Revit Add-Ins</strong> using <strong>C#</strong> and the Revit API and we have also done all the work for this website using <strong>Python</strong> and the all-mighty <strong>Django</strong>. Whichever direction your project takes you, we are ready to follow.</p>
-			<br>
-			<i class="fa fa-cogs fa-2x fa-center"></i>
+			<h3 class="text-align-center"> Development </h3> 
+			<div class="round">
+			<i class="fa fa-cogs fa-2x fa-center fa-vertical-center"></i>
+			</div>
+			<div class="holder">
+			<p class="text-align-center">We develop our own custom Revit Add-Ins and Macros using the Revit API. This allows us to automate chunks of repetitive taks, thus greatly improving your productivity.</p>
+			</div> 
 		</div>
 	</div>
-	<div class="container" style="margin-botom:8em;"><hr></div>
+	<!-- <div class="container" style="margin-botom:8em;"><hr></div> -->
 </div>
 
-<div class="row featured-container" id="activity">
+<div class="row featured-container" style="background-color:#EDEDED; min-height:750px;" id="activity">
 	<div class="container">
-	<h2 style="margin-top:3em; margin-bottom: 2em; font-weight:700;" id="we-do"> RECENT ACTIVITY </h2>
-
+	<h2 style="margin-top:1em; margin-bottom: 3em;" id="we-do"> RECENT ACTIVITY </h2>
 
     <!-- Posts -->
     {% for post in posts %}
-    <div class="col-sm-4">
-	    	<div class="col-bombon">
-    		<img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover">
-	        <h2 class="h2-buttons">{{ post.title }}</h2>
-            <a href="{% url 'blog-post' post.pk %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	 
-	    </div>
+    <div class="col-sm-4 grid">
+    	<div class="col-bombon">
+		<img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover">
+        <h2 class="h2-buttons">{{ post.title }}</h2>
+        <a href="{% url 'blog-post' post.pk %}">
+            <span class="panel"></span>
+        </a>	
+        </div>	 
+    </div>
     {% endfor %}
     <!-- Services  -->
     {% for service in services %}
-    <div class="col-sm-4">
-	    	<div class="col-bombon">
-    		<img  src='{{ MEDIA_URL }}{{ service.thumb_image }}' alt='image for particular blog post' class="cover">
-	        <h2 class="h2-buttons">{{ service.title }}</h2> 
-            <a href="{% url 'module' service.pk %}">
-                <span class="panel"></span>
-            </a>	
-	        </div>	 
-	    </div>
+    <div class="col-sm-4 grid">
+    	<div class="col-bombon">
+		<img  src='{{ MEDIA_URL }}{{ service.image }}' alt='image for particular blog post' class="cover">
+        <h2 class="h2-buttons">{{ service.title }}</h2> 
+        <a href="{% url 'module' service.pk %}">
+            <span class="panel"></span>
+        </a>	
+    	</div>	 
+    </div>
     {% endfor %}
-
 	    
-<div class="empty"></div>
+	<!-- <div class="empty" ></div> -->
+	</div>
 </div>
 
 <div class="row bottom-container grey-container">
 	<div class="container">
-	<hr>
 		<div class="col-sm-6 col-sm-offset-3">
 			<div class="sign-up text-center">
 			<h2><i class="fa fa-envelope-o fa-1x" style=""> </i>
@@ -200,3 +205,14 @@
         </div>
       <button type='submit' class='btn btn-default' style="margin-top:0;">Login</button>
       </form>    -->
+
+<!-- Save and include later
+
+	<p> <strong>Building Information Modelling</strong> is not the future of our industry anymore. It is the present of it. Our mission is to help architecture studios make the transition to the world of <strong>BIM</strong> faster, efficient and actually fulfilling.</p>
+
+
+	<p> We work with individuals as well as with architecture practices; whichever the case, we can provide you with our best <strong>Revit</strong> training and <strong>BIM</strong> implementation services. Our approach is based on understanding your unique requirements and we will adapt our ways in order to achieve the most fulfilling experience for you. </p>
+
+	<p> If you didn't know that by now, we love coding! We develop custom tools to provide architects with really unique ways to achieve their specific goals. We have written interactive and playful <strong>Processing</strong> snippets, we have taken our prototypes out there using <strong>Arduino</strong> (Genuino, cough), </p>
+
+-->

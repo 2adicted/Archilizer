@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^downloads/thankyou/$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'newsletter.views.home', name='home'),
+    # url(r'^$', 'archilizer.views.under_construction', name='downloads'),
     url(r'^contact/$', 'newsletter.views.contact', name='contact'),
     url(r'^contact/thanks/$', 'newsletter.views.thanks', name='thanks'),
     url(r'^about/$', 'archilizer.views.about', name='about'),

@@ -11,7 +11,7 @@ from training.models import TrainingModule
 
 # Create your views here.
 def home(request):
-	title = "Revit Training | BIM Consultancy | Revit Plugins & Custom Tools "
+	title = "BIM Management | Revit Training | Revit Plugins & Custom Tools "
 
 	#add blog-posts	
 	posts = Post.objects.all().order_by("-created")[:3]

@@ -8,34 +8,35 @@
 <div class="about-content">
 	<div class="row">
 		<div class="col-sm-12"> 
-			<img src="{% static 'img/test/laptop.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h" alt="about-us-image">
+			<!-- <img src="{% static 'img/test/laptop.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h" alt="about-us-image"> -->
 
 			<div class="text-h" > About Archilizer </div>
 		</div>
 
 		<div class="col-sm-12">
-
 			<p class="lead">At <strong>Archilizer</strong> we create value through saving time. <strong>Your time.</strong> We are here to support your Architectural ideas by tackling the complex challenges you face. We know <strong>BIM</strong>, <strong>Revit</strong> and how to make it simpler for you.
 			</p>
 		</div>
-		<div class="col-sm-6">
-		<h1> What we do</h1>				
+		<div class="col-sm-12">
+		<h2 style="margin-bottom:1.5em;"> What we do</h2>				
 			{% include 'about.html' %}
-		<h1> Who we are </h1>	
-
+		<h2 style="margin-bottom:1.5em;"> Who we are </h2>	
+		</div>
+		<div class="col-sm-8">
 			<p class="about-p">
 			<strong>Archilizer</strong> is the computationally oriented start-up of architect <strong>Deyan Nenov</strong>.</p>
-			<p class="about-p" style="color:#7E7E7E; font-size:18px; padding-right:5em;">
+			<p class="about-p" style="color:#7E7E7E; font-size:16px; padding-right:5em;">
 			<i>
-			 "I have always been passionate for computer science and its application in the field of Architecture. As an early adopter of BIM (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing."</i>
+			 "I have always been passionate for computer science and its application in the field of Architecture. As an early adopter of Revit (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing."</i>
 			</p>	
+		</div>			
+		<div class="col-sm-3 pull-right">
+			<img src="{% static 'img/test/deyan_nenov.jpg' %}" class="img-responsive" alt="about-us-image">
+		</div>
+		<div class="col-sm-8" style="margin-top:2em;">
 			<p class="about-p">We are focused on creating and implementing robust solutions by developing custom algorithms with various application in the design process. We also engage in computational in nature design projects - we have won several competitions in urban prototyping and have exhibited in V&A London. 
 			</p>	
-			<p class="about-p">
-			
-			</p>
-		</div>
-	</div>
+		</div>	
 </div>
 
 {% endblock %}
