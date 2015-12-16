@@ -9,6 +9,10 @@ from .forms import SignUpForm, ContactForm
 from blog.models import Post
 from training.models import TrainingModule
 
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
 # Create your views here.
 def home(request):
 	title = "BIM Management | Revit Training | Revit Plugins & Custom Tools "
@@ -43,6 +47,8 @@ def home(request):
 			})
 		)
 
+
+@csrf_exempt
 def contact(request):
 	title = 'Contact Us'
 	form = ContactForm(request.POST or None)

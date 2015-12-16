@@ -4,25 +4,53 @@
 {% block head_title %} About Us {{ block.super }} {% endblock %}
 
 {% block content %}
+<style>
+/* Custom style because of backgorund */
+	body{   
+	    background-color:black;  
+	}	
+	body{
+		padding-top: 50px !important;
+	}
+	.head_title{
+		margin:2em 0 2em 0;
+	}
+</style>
 
-<div class="about-content">
-	<div class="row">
-		<div class="col-sm-12"> 
-			<!-- <img src="{% static 'img/test/laptop.jpg' %}" class="img-responsive img-rounded box-shadow-content about-h" alt="about-us-image"> -->
+<div class="col-sm-12 head_title">
+	<h1 class="white text-align-center">
+		The question is not 'Why BIM?'. The question is 'Why don't you give us your BIM right now?'
+	</h1>
+	<h3 class="grey text-align-center">At <strong>Archilizer</strong> we create value through saving time. <strong>Your time.</strong> We are here to support your Architectural ideas by tackling the complex challenges you face. We know <strong>BIM</strong>, <strong>Revit</strong> and how to make it simpler for you.
+	</h3>
+</div>
+{% endblock %}
 
-			<div class="text-h" > About Archilizer </div>
-		</div>
 
+{% block sub-content %}
+<div class="row featured-container" style="padding-bottom:4em;">
+	<div class="col-xl-12">
+		<span class="text-align-center">			
+			<h2 style="margin-top:0.5em; margin-bottom: 0.5em;" id="we-do"> WHAT CAN WE DO FOR YOU</h2>
+		</span>
+	<div class="container default-container">
 		<div class="col-sm-12">
-			<p class="lead">At <strong>Archilizer</strong> we create value through saving time. <strong>Your time.</strong> We are here to support your Architectural ideas by tackling the complex challenges you face. We know <strong>BIM</strong>, <strong>Revit</strong> and how to make it simpler for you.
-			</p>
-		</div>
-		<div class="col-sm-12">
-		<h2 style="margin-bottom:1.5em;"> What we do</h2>				
 			{% include 'about.html' %}
-		<h2 style="margin-bottom:1.5em;"> Who we are </h2>	
 		</div>
-		<div class="col-sm-8">
+	</div>
+		<div class="container">
+			<hr>
+		</div>
+	</div>
+
+	<div class="col-xl-12">
+		<span class="text-align-center">			
+			<h2 style="margin-top:0.5em; margin-bottom: 0.5em;" id="we-do"> WHO WE ARE </h2>
+		</span>
+	</div>
+
+	<div class="container default-container">	
+		 <div class="col-sm-8">
 			<p class="about-p">
 			<strong>Archilizer</strong> is the computationally oriented start-up of architect <strong>Deyan Nenov</strong>.</p>
 			<p class="about-p" style="color:#7E7E7E; font-size:16px; padding-right:5em;">
@@ -37,10 +65,47 @@
 			<p class="about-p">We are focused on creating and implementing robust solutions by developing custom algorithms with various application in the design process. We also engage in computational in nature design projects - we have won several competitions in urban prototyping and have exhibited in V&A London. 
 			</p>	
 		</div>	
+	</div>
+</div>
+
+<div class="row bottom-container grey-container">
+	<div class="container">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="sign-up text-center">
+			<h2><i class="fa fa-envelope-o fa-1x" style=""> </i>
+				Hello, stranger. </h2>
+				<p class="lead"> You can subscribe to our newsletter here.</p>
+
+
+
+				<form method='POST' class="form-inline" action='{% url "about" %}'>{% csrf_token %}
+					<div class='form-group row'>
+         				<input type='text' class='form-control form-name' name='full_name' placeholder='Name' />			
+         				<input type='text' class='form-control form-email' name='email' placeholder='Email' />
+						<input class="btn btn-primary submit" type="submit" value="Sign Up">
+					</div>
+				</form>	      
+
+
+				<!-- <form accept-charset="UTF-8" action="https://socialtriggers.infusionsoft.com/app/form/process/0dce609cb00ae6b7988728683558c52d" class="form-inline" method="POST" _lpchecked="1">
+                                
+                    <input name="inf_form_xid" type="hidden" value="0dce609cb00ae6b7988728683558c52d">
+                    <input name="inf_form_name" type="hidden" value="Social Triggers Website">
+                    <input name="infusionsoft_version" type="hidden" value="1.36.0.43">
+
+                    <div class="form-group row">
+                        
+                        <input type="text" id="inf_field_FirstName" name="inf_field_FirstName" class="form-control remove-right-borders form-name" placeholder="First name">
+                        <input type="text" id="inf_field_Email" name="inf_field_Email" class="form-control remove-left-borders form-email" placeholder="Email">
+                        <input type="submit" value="Free Updates!" class="btn btn-primary submit">
+
+                    </div>
+
+            	</form> -->
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
 
-<div class="row">
-    <div class="col-sm-9">
-        <div class="blog-header text-align-center blog-title"> {% block topic %}ARCHILIZED{% endblock %}

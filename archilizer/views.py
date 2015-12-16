@@ -4,6 +4,8 @@ from django.template import RequestContext
 
 from newsletter.forms import SignUpForm
 
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 def about(request):
 	"""About us page"""
@@ -15,6 +17,7 @@ def about(request):
 			})
 		)
 
+@csrf_exempt
 def under_construction(request):
 	"""Under Construction home view"""
 	title = "Under Construction"
