@@ -3,29 +3,58 @@
 
 {% block topic %} {{ post.title }} {% endblock %}
 {% block head_title %} {{ block.super }}  {{ post.title }} {% endblock %}
-
+{% block sidebar %}
+{% include "blog/sidebar.html" %}
+{% endblock %}
 {% block sub_content %}
 
 <div class="main">
     <div class="sub-title">
+        <h1>{{ post.title|safe }}</h1>
+
         <div class="time">Created {{ post.created|date:"d F Y"|upper }} and filed under 
             {% for category in post.categories.all %}
             {{ category|upper }}
             {% endfor %}
         </div>
     </div>
-    <div class="block-post-body">
-        <div class="body">{{ post.body|safe }}</div>
+
+    <div class="col-sm-12" style="padding-left: 0 !important;">
+        <div class="blog-post">
+            <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>            
+        </div> 
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="blog-post-text-post" >
+                    <p> {{ post.body|safe }} </p>
+                </div>
+            </div>                
+            <div class="col-sm-3 pull-right">
+                <h5 class="categories">
+                    {{ post.created|date:"F d"|upper }}
+                    <br>
+                    {% for category in post.categories.all %}
+                    {{ category }}
+                    <br>
+                    {% endfor %}
+                </h5>
+            </div>
+        </div>
     </div>
+
+    <hr>
+
     <div  class="comment">
         {% if comments %}
-            <h3 class="sub-title text-align-center" style="margin-bottom: -2em;">COMMENTS</h3>
+        <div class="row">
+            <div class="col-sm-6">
+            <h3 class="sub-title" style="margin-bottom: 0.5em;">COMMENTS</h3>
                 <form action="{% url 'blog-delete-comment' post.pk %}" method="POST">{% csrf_token %}
                     {% for comment in comments %}
                         <div class="block-post-body">
-                            <div class="comment-author">User {{ comment.author }} commented .. </div>
-                            <div class="comment-body">{{ comment.body|safe }}</div>
-                            <div class="comment-time">{{ comment.created|date:"d F Y \a\t h:m" }}</div>
+                            <div class="comment-author">{{ comment.author }} commented .. </div>
+                            <p>{{ comment.body|safe }}</p>
+                            <div class="comment-author">{{ comment.created|date:"d F Y \a\t h:m" }}</div>
                             {% if user.is_staff %}
                                 <input type="checkbox" name="delete" value="{{ comment.pk }}">
                                 <a href="{% url 'blog-delete-comment' post.pk comment.id %}">delete</a>
@@ -38,6 +67,8 @@
                     {% endif %}
                     </form>
                 {% endif %} 
+            </div>
+        </div>
         <div class="row">
             <div class ="col-sm-6">
             <!-- Comments  -->
@@ -45,7 +76,7 @@
                 <!-- Comment form  -->
                 <form method="POST" action="{% url 'blog-add-comment' post.pk %}">{% csrf_token %}
                     {{ form|crispy }}
-                    <div id="submit"><input type="submit" class="btn btn-default" name="2" value="Post it"></div>
+                    <div id="submit"><input type="submit" class="btn btn-default" name="2" value="Submit Comment"></div>
                 </form>      
             </div>
         </div>

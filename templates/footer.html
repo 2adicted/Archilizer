@@ -1,39 +1,50 @@
+{% load crispy_forms_tags %}
+<!-- This version of the footer is from 02-Jan-2016 -->
 <footer class="gradient" style="min-height:10em; height:100%;">
 <!-- This is the gradient transition from the grey body to the white footer -->
 </footer> 
 
 <footer class="short footer-border" id="footer">
     <div class="container">
+
         <div class="row">
-            <br/>
-            <div class="col-md-9">
-                <h4>About</h4>
-                {% include 'about.html' %}
-                <hr class="light">
-                <div class="row">
-                    <div class="col-md-3">
-                        <a href="{% url 'about' %}"><h5>About Us</h5></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="{% url 'blog' %}"><h5>Blog</h5></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="{% url 'downloads' %}"><h5>Downloads</h5></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="{% url 'contact' %}"><h5>Contact us</h5></a>
-                    </div>
-                </div>
+
+            <div class="col-md-8 short">
+
+                <h1><i class="fa fa-envelope-o fa-1x" style=""> </i> Hello, stranger.</h1>
+                    <p> Sign up to get plugin updates and news from Archilizer. </p>
+                    <div style="margin-bottom:33px;"></div>
+                    <form id='sub-form' method='POST' class="form-inline" action="">{% csrf_token %}                        
+                        <div class='form-group'>
+                            {{ form_signup|crispy }}
+                            <input class="btn btn-default submit" type="submit" name="sign-up" value="Sign Up" style="margin-left:0; ">
+                        </div>
+                    </form>   
+
             </div>
-            <div class="col-md-3">
+
+            <div class="col-md-2">    
+
+                <h4 class="short">Browse us</h4>
+                <div style="margin-bottom:36px;"></div>
+                <p><a href="{% url 'about' %}">About Us</a></p>
+                <p><a href="{% url 'blog' %}">Blog</a></p>
+                <p><a href="{% url 'downloads' %}">Downloads</a></p>
+                <p><a href="{% url 'contact' %}">Contact us</a></p>
+            
+            </div>
+
+            <div class="col-md-2">
                 <h4 class="short">Contact us</h4>
-                <div class="contactus">
-                    <p><i class="icon icon-map-marker"></i><br>40 Newlands Quay<br>E1W 3QZ, London<br>United Kingdom</p>
-                    <!-- <p>&nbsp;</p> -->
-                    <p><i class="icon icon-phone"></i> +44 77 863 18 504</li>
-                    <p><i class="icon icon-envelope"></i> <a href="mailto:dido.nenov@gmail.com">dido.nenov@gmail.com</a></p>
-                </div>
-                <div class="icons">
+
+                <div style="margin-bottom:28px;"></div>
+                    <p class="contact">40 Newlands Quay<br>E1W 3QZ, London<br>United Kingdom</p>
+                    <p class="contact"> +44 77 863 18 504</p>
+                    <p class="contact"><a href="mailto:dido.nenov@gmail.com">dido.nenov@gmail.com</a></p>
+            </div>
+
+
+<!--                 <div class="icons">
                     <a href="https://www.facebook.com/archilizer" target="_blank" title="Facebook" style="margin-right:1em;"><i class="fa fa-facebook fa-2x"></i> </a>                
                     <a href="https://www.twitter.com/didonenov" target="_blank" title="Twitter"><i class="fa fa-twitter fa-2x"></i> </a>
                     {% comment %}
@@ -43,14 +54,16 @@
                     <li class="linkedin"><a href="https://www.linkedin.com/company/bimobject" target="_blank" title="Linkedin">Linkedin</a></li>
                     <li class="flickr"><a href="https://www.flickr.com/bimobject" target="_blank" title="Flickr">Flickr</a></li>
                     {% endcomment %}
-                </div>
-            </div>
+                </div> -->
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <br>
-                    <p>© 2015 Archilizer. All Rights Reserved.</p>                  
+
+         <div class="row">
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row final-row">
+                        <br>
+                        <h6 class="text-align-center">© 2015 Archilizer. All Rights Reserved.</h6>                  
+                    </div>
                 </div>
             </div>
         </div>

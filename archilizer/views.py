@@ -7,13 +7,28 @@ from newsletter.forms import SignUpForm
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+@csrf_exempt
 def about(request):
 	"""About us page"""
+
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('thankyou')
+		
 	return render(
 		request,
 		'about_us.html',
 		context_instance = RequestContext(request,
 			{
+			"form_signup" : form,
 			})
 		)
 

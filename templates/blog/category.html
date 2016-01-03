@@ -8,29 +8,47 @@
 
 {% block sub_content %}
 <div class="row">
+    <div class="col-sm-12">
+        <h1>Archilizer Recipe Book</h1>
+        <h2>A blogspot for computational ideas in Architectural practice.</h2>
+        {% block header %} <br> <p> Showing posts in category {{ category.title }} </p> {% endblock %}
+        <hr>
+    </div>
+</div>
+<div class="row">
     <!-- Posts  -->
     {% if posts %}
         {% for post in posts %}
-        <div class="col-sm-4">
-             <div class="blog-post">
-            <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover" >
-            <div class="title"><h3 class="h3-blog-post-title">{{ post.title }}</h3></div>
-                <ul>
-                    <div class="bottom">   
-                        <div class="categories">{{ post.created|date:"F d"|upper }}</div>
-                        {% for category in post.categories.all %}
-                        <div class="categories">{{ category }}</div>
-                        {% endfor %}
-                    </div>
-                </ul>
+        <div class="col-sm-12">
+            <div class="blog-post">
+                <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>            
                 <a href="{% url 'blog-post' post.pk %}">
                     <span class="panel"></span>
                 </a>
+            </div> 
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="blog-post-text">
+                        <a href="{% url 'blog-post' post.pk %}">
+                        <h4>{{ post.title }}</h4>
+                        </a>
+                        <p> {{ post.body|safe|truncatewords_html:66 }} </p>
+                    </div>
+                </div>                
+                <div class="col-sm-3 pull-right">
+                    <h5 class="categories">
+                        {{ post.created|date:"F d"|upper }}
+                        <br>
+                        {% for category in post.categories.all %}
+                        {{ category }}
+                        <br>
+                        {% endfor %}
+                    </h5>
+                </div>
+            </div>
         </div>
-        </div>
-        {{ post.text }}
     {% endfor %}
-    <br />
+    <br/>
     {% if page.has_previous %}
     <a href="/{{ page.previous_page_number }}/">Previous Page</a>
     {% endif %}

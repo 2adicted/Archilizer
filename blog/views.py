@@ -10,6 +10,8 @@ from django.template import RequestContext
 
 from .models import Post, Comment, Category
 from .forms  import CommentForm
+
+from newsletter.forms import SignUpForm
 # Create your views here.
 
 def main(request):
@@ -25,6 +27,18 @@ def main(request):
 	except (InvalidPage, EmptyPage):
 		posts = paginator.page(paginator.num_pages)
 
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
+
 	return render(
 		request,
 		'blog/list.html',
@@ -35,6 +49,7 @@ def main(request):
 		 	"user" : request.user,
 	 		"months" : mkmonth_lst(),
 	 		"categories": category_lst(),
+			"form_signup" : form,
 			})
 		)
 
@@ -44,6 +59,19 @@ def category_lst():
 def month(request, year, month):
 	"""Monthly archive."""
 	posts = Post.objects.filter(created__year=year, created__month=month)
+
+
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
 
 	return render(
 	request,
@@ -56,6 +84,7 @@ def month(request, year, month):
 	 	"months" : mkmonth_lst(),
  		"categories": category_lst(),
 	 	"archive" : True,
+		"form_signup" : form,
 		})
 	)
 
@@ -66,6 +95,18 @@ def post(request, pk):
 	post = Post.objects.get(pk=int(pk))
 	comments = Comment.objects.filter(post=post)
 
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
+
 	return render(
 	request,
 	'blog/post.html',
@@ -75,6 +116,9 @@ def post(request, pk):
 		"comments": comments,
 		"form": CommentForm(), 
 	 	"user": request.user,
+ 		"months" : mkmonth_lst(),
+ 		"categories": category_lst(),
+		"form_signup" : form,
 		})
 	)
 
@@ -153,6 +197,20 @@ def category(request, categorySlug, pk):
 	except EmptyPage:
 		returned_page = pages.page(pages.num_pages)
 
+
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
+		
+
 	"""Display all the posts"""
 	return render(
 	request,
@@ -165,5 +223,6 @@ def category(request, categorySlug, pk):
 		"category": category, 
 	 	"months" : mkmonth_lst(),
  		"categories": category_lst(),
+		"form_signup" : form,
 		})
 	)

@@ -11,9 +11,9 @@ from training.models import TrainingModule
 
 from django.views.decorators.csrf import csrf_exempt
 
+# Create your views here.
 
 @csrf_exempt
-# Create your views here.
 def home(request):
 	title = "BIM Management | Revit Training | Revit Plugins & Custom Tools "
 
@@ -41,7 +41,7 @@ def home(request):
 		context_instance = RequestContext(request,
 			{
 			"title": title,
-			"form" : form,
+			"form_signup" : form,
 			"posts" : posts,
 			"services" : services,
 			})
@@ -52,6 +52,7 @@ def home(request):
 def contact(request):
 	title = 'Contact Us'
 	form = ContactForm(request.POST or None)
+	form_signup = SignUpForm(request.POST or None)
 
 	if form.is_valid():
 		# for key in form.cleaned_data:
@@ -76,11 +77,21 @@ def contact(request):
 
 		return HttpResponseRedirect(reverse('thanks'))
 
+	if form_signup.is_valid():
+		instance = form_signup.save(commit=False)
+		full_name = form_signup.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
+
 	return render(
 		request,
 		'forms.html',
 		context_instance = RequestContext(request,
 			{			
+			"form_signup" : form_signup,
 			"form" : form,
 			"title" : title,
 			})

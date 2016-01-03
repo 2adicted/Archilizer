@@ -20,11 +20,10 @@ class SignUpForm(forms.ModelForm):
 		full_name = self.cleaned_data.get('full_name')
 		return full_name
 
-
 class ContactForm(forms.Form):
 	full_name = forms.CharField(required=True)
 	email = forms.EmailField(required=True)
-	message = forms.CharField(max_length=500, required=True)
+	message = forms.CharField(widget=forms.Textarea, max_length=500, required=True)
 
 	def clean_email(self):
 		email = self.cleaned_data.get('email')		
