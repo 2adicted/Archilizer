@@ -9,24 +9,14 @@
 {% block sub_content %}
 
 <div class="main">
-    <div class="sub-title">
-        <h1>{{ post.title|safe }}</h1>
-
-        <div class="time">Created {{ post.created|date:"d F Y"|upper }} and filed under 
-            {% for category in post.categories.all %}
-            {{ category|upper }}
-            {% endfor %}
-        </div>
-    </div>
-
     <div class="col-sm-12" style="padding-left: 0 !important;">
         <div class="blog-post">
             <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>            
         </div> 
         <div class="row">
             <div class="col-sm-9">
-                <div class="blog-post-text-post" >
-                    <p> {{ post.body|safe }} </p>
+                <div class="blog-post-text-post">
+                    <h1>{{ post.title|safe }}</h1>
                 </div>
             </div>                
             <div class="col-sm-3 pull-right">
@@ -38,7 +28,14 @@
                     <br>
                     {% endfor %}
                 </h5>
-            </div>
+            </div>    
+        </div>    
+        <div class="row blog-post-body">    
+            <div class="col-sm-12">
+                <div class="blog-post-text-post">
+                    <p> {{ post.body|safe }} </p>
+                </div>
+            </div>         
         </div>
     </div>
 

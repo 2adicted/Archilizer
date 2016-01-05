@@ -60,7 +60,6 @@ def month(request, year, month):
 	"""Monthly archive."""
 	posts = Post.objects.filter(created__year=year, created__month=month)
 
-
 	#add form
 	form = SignUpForm(request.POST or None)
 
@@ -85,6 +84,8 @@ def month(request, year, month):
  		"categories": category_lst(),
 	 	"archive" : True,
 		"form_signup" : form,
+		"year" : year,
+		"month" : month,
 		})
 	)
 
@@ -145,6 +146,7 @@ def add_comment(request, pk):
 
 def mkmonth_lst():
 	"""Make a list of months to show archive links."""
+
 	if not Post.objects.count(): return []
 	# set up vars
 	year, month = time.localtime()[:2]
@@ -153,15 +155,18 @@ def mkmonth_lst():
 	fmonth = first.created.month
 	months = []
 
-	# loop over years and months
+	# loop over years and months and create a list of the time interval between now and the first posted blog post
 	start, end = 12, 0
+	# TEST 
+	# import pdb; pdb.set_trace()
+	# TEST
 	for y in range(year, fyear-1, -1):
 		if y == year: start = month
 		if y == fyear: end = fmonth -1
 
 		for m in range (start, end, -1):
 			months.append((y, m, month_name[m]))
-	
+		start, end = 12, 0
 	return months
 
 

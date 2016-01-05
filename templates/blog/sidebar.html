@@ -2,7 +2,7 @@
     <div class="blog-sidebar-box side-bar">
         <h4>Monthly Archive</h4><br/>
         {% for month in months %}
-            {% ifchanged month.0 %} {{ month.0 }} <br/> <hr style="border-top-style:solid;">{% endifchanged %}
+            {% ifchanged month.0 %} <br> {{ month.0 }} <br> <hr style="border-top-style:solid;">{% endifchanged %}
             <li>
                 <a href="{% url 'blog-month' month.0 month.1 %}">{{ month.2 }}</a> 
             </li>

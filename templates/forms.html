@@ -16,13 +16,10 @@
 			{% endif %}
 			<form method="POST" action=""> {% csrf_token %}
 				{{ form|crispy }}
-			<input class="btn btn-default" type="submit" name="contact-us" value="Send">
+			<input class="btn btn-danger submit" style="margin:0;" type="submit" name="contact-us" value="Send">
 			</form>
 			</div>
 		</div>
 	</div>
 </div>
-
-{% endblock  %}
-
-{% url "about" %}
+{% endblock %}

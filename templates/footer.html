@@ -11,13 +11,14 @@
 
             <div class="col-md-8 short">
 
-                <h1><i class="fa fa-envelope-o fa-1x" style=""> </i> Hello, stranger.</h1>
+                <h1><i class="fa fa-envelope-o fa-1x" style=""> </i> It's free! </h1>
+                    <div style="margin-bottom:18px;"></div>
                     <p> Sign up to get plugin updates and news from Archilizer. </p>
                     <div style="margin-bottom:33px;"></div>
                     <form id='sub-form' method='POST' class="form-inline" action="">{% csrf_token %}                        
                         <div class='form-group'>
                             {{ form_signup|crispy }}
-                            <input class="btn btn-default submit" type="submit" name="sign-up" value="Sign Up" style="margin-left:0; ">
+                            <input class="btn btn-danger submit" type="submit" name="sign-up" value="Sign Up" style="margin-left:0; ">
                         </div>
                     </form>   
 

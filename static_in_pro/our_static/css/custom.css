@@ -1,18 +1,20 @@
 /* COLOR SCHEME */
-/* PINK: #FC4270  */ 
+/* RED: #C30000  */ 
 /* dark PINK:; #61192B */
+/* BASE  GREY0: #FBFBFB; */
 /* light GREY1: #FDFDFD */
 /* light GREY2: #E1E1E1 */
 /* light GREY3: #C4C4C4 */
 /* light GREY4: #4B4B4B */
 /* medium GREY: #8E8E8E */
 /* almost BLACK: #141414 */
-/* blue : #0088CC */
+/* blue : #0088CC */ 
+/* blue2: #87E8F5 */
 html, body{
     height:100%;
 }
 body{
-    background-color: #F5F5F5 ;
+    background-color: #FBFBFB ;
 }
 .btn-margin{
     margin-top: 2em;
@@ -69,6 +71,9 @@ li {
 h1{
     /*padding-bottom: 1em;*/
 }
+.dropdown-menu li{
+    margin-bottom: 0.2em;
+}
 .side-bar hr{    
     border:none;
     border-top:1px dotted #E1E1E1;
@@ -86,12 +91,12 @@ strong {
     color:#8E8E8E;
 }
 .strong-light {
-    color:#FC4270;
+    color:#C30000;
 }
 .h2-buttons{
     font-size: 24px;
     font-weight: 100;
-    color:#FC4270;
+    color:#C30000;
     position:absolute;    
     top:calc(50% - 20px);
     left:50%;
@@ -152,7 +157,7 @@ strong {
     width:100%;
     height: 50px;
     text-align: center;
-    color:#FC4270;
+    color:#C30000;
 }
 .fa-vertical-center{
     position: relative;
@@ -187,7 +192,7 @@ strong {
     position: relative;
 }
 .featured-container{
-    background-color: #FFFFFF;
+    background-color: #FBFBFB;
     margin: auto;
     width:auto;
     padding: 1em 0 0 0;
@@ -223,15 +228,12 @@ strong {
     background-color: #F5F5F5;
 }
 .gradient{
-   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f5f5+0,ffffff+100 */
-    background: rgb(245,245,245); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(245,245,245,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(245,245,245,1) 0%,rgba(255,255,255,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fbfbfb+0,f5f5f5+100 */
+    background: #fbfbfb; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fbfbfb 0%, #f5f5f5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #fbfbfb 0%,#f5f5f5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #fbfbfb 0%,#f5f5f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
 }
 .lead{
     font-size: 18px;
@@ -347,12 +349,8 @@ strong {
     color: #8E8E8E;
     padding: 1em 0 1em 0;
 }
-.blog-header{
-    position:relative;
-    margin-bottom: 1em;
-    font-size: 2em;
-    background-color: #fff;
-    padding:0.5em;
+.blog-header h2{
+    color:#4B4B4B;
 }
 .block-post-body{
     position: relative;
@@ -447,7 +445,7 @@ strong {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     border-style: solid;
-    border-color: #F5F5F5;
+    border-color: #FBFBFB;
     border-width: 10px;
     background-color: rgba(1,2,12,1);
 
@@ -509,7 +507,7 @@ strong {
 }
 .blog-post{
     position: relative;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
     /*background-color: #8E8E8E;*/
     height:auto;
     max-height: 308px;
@@ -538,7 +536,7 @@ strong {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300; 
     line-height: 150%;  
-    color:#141414;
+    color:#141414;  
 }
 .blog-post-text-post{
     margin-bottom: 4em;
@@ -546,7 +544,7 @@ strong {
 .blog-post-text-post p{
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300; 
+    font-weight: 500; 
     line-height: 1.6em;  
     color:#141414;
 }
@@ -557,6 +555,15 @@ strong {
     -moz-transition: all .5s ease-out;
     -webkit-transition: all .5s ease-out;
     -o-transition: all .5s ease-out;
+}
+.blog-post-body p img{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:auto !important;
+    width:100% !important;
+    vertical-align:middle;    
 }
 .bottom{
     position: absolute;
@@ -624,7 +631,7 @@ strong {
 
 /* footer */
 .short{
-    background-color: #FFFFFF;
+    background-color: #F5F5F5;
     padding-top: 2em;
 }
 .final-row{

@@ -5,11 +5,10 @@
 {% endblock %}
 
 {% block sub_content %}
-<div class="row">
+<div class="row blog-header">
     <div class="col-sm-12">
         <h1>Archilizer Recipe Book</h1>
         <h2>A blogspot for computational ideas in Architectural practice.</h2>
-        {% block header %} {% endblock %}
         <hr>
     </div>
 </div>
@@ -34,7 +33,7 @@
                 </div>                
                 <div class="col-sm-3 pull-right">
                     <h5 class="categories">
-                        {{ post.created|date:"F d"|upper }}
+                        {{ post.created|date:"d F"|upper }}
                         <br>
                         {% for category in post.categories.all %}
                         {{ category }}
