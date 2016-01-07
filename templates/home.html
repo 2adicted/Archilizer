@@ -4,21 +4,6 @@
 
 {% block head_title %} {{ title }} {% endblock %}
 
-{% block jumbotron_not %}
-<!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron box-shadow-content vertical-center">
-  		<div class="container">
-	      <div class="row">
-		      <div class="col-sm-6">
-		        <h1 class="front-title">Archilizer</h1>
-		        <!-- {% include 'about_home.html' %}		         -->
-		        <!--   <a class="btn btn-lg btn-default" href="{% url 'registration_register' %}" role="button">Join us!</a>    -->   	
-		      </div> 
-	      </div>    	
-      	</div>
-      </div>
-{% endblock %}
-
 <script>
 {% block jquery %}
    $(".scroll").click(function(event){
@@ -51,27 +36,23 @@
 		padding-top: 50px !important;
 	}
 </style>
-
-<div class="row">
-	<div class="col-md-6 healthy">
-		<span class="middle">
-			<h1 class="white"> BIM Management, Revit Training and Development </h1>
-			<br>
-			<p class="about-home-p">
-			 We do <strong class="strong-light">BIM</strong>, <strong class="strong-light">Revit</strong> and solve time-consuming problems in creative, computational ways.  We have a passion for novelty and sharing our knowledge with others.
-			 <br><br>
-			 Get in contact with us and we will set up . We'd love to help!
-			</p>	
-		</span>
-	</div>
-	<div class="col-md-6 healthy">
-		<span class="middle-right">
+	<div class="row top-container vertical-align">
+		<div class="col-md-6">
+				<h1 class="white"> BIM Management, Revit Training and Development </h1>
+				<br>
+				<p class="about-home-p">
+				 We do <strong class="strong-light">BIM</strong>, <strong class="strong-light">Revit</strong> and solve time-consuming problems in creative, computational ways.  We support micro and small architectural practices with all our <a href="{% url 'trainings' %}">services.</a> 
+				 <br><br>
+				 Do we need to talk? Get in contact with us and we will call you. We'd love to help!
+				</p>	
+		</div>
+		<div class="col-md-6 horizontal-align">
 			<span class="hvr-buzz-out">
 				<a href="{% url 'contact' %}">
 					<img class='svg' id="fill" src="{% static 'img/computer.svg' %}" alt='contact us buzzing computer'>
 				</a>
 			</span>
-		</span>
+		</div>
 	</div>
 </div>
 {% endblock %}

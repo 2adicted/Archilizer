@@ -4,69 +4,88 @@
 {% block head_title %} About Us {{ block.super }} {% endblock %}
 
 {% block content %}
-<style>
+
+
+{% endblock %}
+
+{% block sub-content %}
+
+ <style>
 /* Custom style because of backgorund */
 	body{   
-	    background-color:black;  
+	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
+	        center center fixed;
+	    -webkit-background-size: cover; 
+	    -moz-background-size: cover; 
+	    -o-background-size: cover; 
+	    background-size: cover;     
 	}	
 	body{
 		padding-top: 50px !important;
 	}
-	.head_title{
-		margin:2em 0 2em 0;
-	}
 </style>
-
-<div class="col-sm-12 head_title">
-	<h1 class="white text-align-center">
-		The question is not 'Why BIM?'. The question is 'Why don't you give us your BIM?'
-	</h1>
-	<h3 class="grey text-align-center">At <strong>Archilizer</strong> we create value through saving time. <strong>Your time.</strong> We are here to support your Architectural ideas by tackling the complex challenges you face. We know <strong>BIM</strong>, <strong>Revit</strong> and how to make it simpler for you.
-	</h3>
-</div>
-{% endblock %}
-
-
-{% block sub-content %}
-<div class="row featured-container" style="padding-bottom:4em;">
-	<div class="col-xl-12">
-		<span class="text-align-center">			
-			<h2 style="margin-top:0.5em; margin-bottom: 0.5em;" id="we-do"> WHAT CAN WE DO FOR YOU</h2>
-		</span>
-	<div class="container default-container">
-		<div class="col-sm-12">
-			{% include 'about.html' %}
+<div class="layer">
+	<div class="container">
+		<div class="row top-container vertical-align">
+			<div class="col-sm-6">
+<!-- 				<h2> WHO WE ARE </h2>
+				<br> -->
+				<p class="about-home-title">
+				 Hi there, I'm <strong>Deyan</strong>.
+				</p>	
+				<p class="about-p">				
+				 I have always been passionate for computer science and its application in the field of Architecture and <strong style="color:#FDFDFD">Archilizer</strong> is my computationally oriented start-up.
+				 </p>
+				 <p class="about-p"> As an early adopter of Revit (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing.
+				</p>
+				 <p class="about-p"> I support small architectural practices by bringing knowledge where it's needed. I hope that helps.
+				</p>						
+				 <p class="about-p"> Thanks for dropping by!
+				</p>		
+			</div>
+			<div class="col-sm-3 horizontal-align about" style="margin-left: auto;">
+				<img src="{% static 'img/test/deyan_nenov.jpg' %}" class="img-responsive" alt="about-us-image">	
+			</div>
 		</div>
-	</div>
-		<div class="container">
-			<hr>
-		</div>
-	</div>
-
-	<div class="col-xl-12">
-		<span class="text-align-center">			
-			<h2 style="margin-top:0.5em; margin-bottom: 0.5em;" id="we-do"> WHO WE ARE </h2>
-		</span>
-	</div>
-
-	<div class="container default-container">	
-		 <div class="col-sm-8">
-			<p class="about-p">
-			<strong>Archilizer</strong> is the computationally oriented start-up of architect <strong>Deyan Nenov</strong>.</p>
-			<p class="about-p" style="color:#7E7E7E; font-size:16px; padding-right:5em;">
-			<i>
-			 "I have always been passionate for computer science and its application in the field of Architecture. As an early adopter of Revit (2009), I have evangelized its potential and use through trainings, lectures and above all - by personally showcasing its ability to automate staple processes of the design workflow, thus increasing precision, accuracy and efficiency and allowing us, architects, to spend more time in what matters most - designing."</i>
-			</p>	
-		</div>			
-		<div class="col-sm-3 pull-right">
-			<img src="{% static 'img/test/deyan_nenov.jpg' %}" class="img-responsive" alt="about-us-image">
-		</div>
-		<div class="col-sm-8" style="margin-top:2em;">
-			<p class="about-p">We are focused on creating and implementing robust solutions by developing custom algorithms with various application in the design process. We also engage in computational in nature design projects - we have won several competitions in urban prototyping and have exhibited in V&A London. 
-			</p>	
-		</div>	
 	</div>
 </div>
+<div class="non-container">
+	<div class="container about">	
+		<div class="row">
+				<div class="col-sm-6">
+					<h2 style="margin-top:0em; margin-bottom: 2em;" id="we-do"> WHAT WE DO FOR YOU</h2>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-6">					
+					<p class="about-p-dark">
+					Our <a href="{% url 'trainings' %}">services</a> are focused around creating value for individual architects or small practices. If you are in the business of delivering great design product in time while keeping up with the demands of the market, chances are we have something in store for you. 
+					</p>
+
+					<p class="about-p-dark" id="management"><strong> BIM Management </strong> is all about setting those standards correctly and right from the very start. Translating your architectural language to all the new requirements might feel overwhelming and challenging at first and taking more people on board hides risks and uncertainties. 
+					</p>                
+
+					<h3>
+					The question is not 'Why BIM?'. The question is 'Why don't you give us your BIM?'
+					</h3>
+				</div>		
+				<div class="col-sm-6">
+					<p class="about-p-dark" id="training">We are here to give you the best of both worlds - all the knowledge that you need when you need it. No long-term overruns all the while keeping the expertise for yourself - we can train your team on the go. We are passionate about teaching our skills to those who start now.</p>
+
+					<p class="about-p-dark" id="development">And to top it off, we develop custom (Revit) plugins - if you are following our <a href="{% url 'blog' %}">blog</a> you will be able to find ideas on how to make, or even download some powerful features for free - yes, we love Open Source.
+					</p>    
+					<h3  class="special"> We know <strong>BIM</strong>, <strong>Revit</strong> and how to make it simpler for you.</h3> 
+
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-6 pull-right" style="margin-top:0em;">					
+					<p>
+					Whatever the case, just <a href="{% url 'contact' %}">contact us</a> and we will find the best solution for your needs.
+					</p>  
+				</div>
+		</div>
+	</div>
+</div>
 
 {% endblock %}
-

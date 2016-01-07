@@ -5,20 +5,18 @@
 {% block head_title %} Contact Us {{ block.super }} {% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row top-container vertical-align" style="min-height:60em;">
 	<div class="col-sm-6">
-		<div class="form-container">
-			<div class="form">
-			{% if title %}
-			<h1> {{title}}</h1>
-			<p> Please, contact us with your query. We will get back to you as soon as possible. </p>
-			<br>
-			{% endif %}
-			<form method="POST" action=""> {% csrf_token %}
-				{{ form|crispy }}
-			<input class="btn btn-danger submit" style="margin:0;" type="submit" name="contact-us" value="Send">
-			</form>
-			</div>
+		<div class="form">
+		{% if title %}
+		<h1> {{title}}</h1>
+		<p> Please, contact us with your query. We will get back to you as soon as possible. </p>
+		<br>
+		{% endif %}
+		<form id="comments" method="POST" action=""> {% csrf_token %}
+			{{ form|crispy }}
+		<input class="btn btn-danger submit" style="margin:0;" type="submit" name="contact-us" value="Send">
+		</form>
 		</div>
 	</div>
 </div>
