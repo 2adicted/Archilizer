@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head_title %} Services {{ block.super }} {% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
+
+{% block sub-content %}
+
+<!-- {% if gotodiv %}
+<script> window.location.hash = '#{{gotodiv}}'; </script>
+{% endif %} -->
+
+ <style>
+/* Custom style because of backgorund */
+	body{   
+	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
+	        center center fixed;
+	    -webkit-background-size: cover; 
+	    -moz-background-size: cover; 
+	    -o-background-size: cover; 
+	    background-size: cover;     
+	}	
+	body{
+		padding-top: 50px !important;
+	}
+</style>
+<div class="services">
+{% include 'trainings/management.html' %}
+{% include 'trainings/training.html' %}
+{% include 'trainings/development.html' %}
+</div>
+{% endblock %}

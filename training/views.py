@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @csrf_exempt
-def training(request):
+def services(request):
 	"""Trainings page"""
 	trainings = TrainingModule.objects.all()
 
@@ -25,15 +25,35 @@ def training(request):
 		instance.save()
 		return HttpResponseRedirect('thankyou')
 
+	# gotodiv = False
+
+	# if request_name(request) == 'development':
+	# 	gotodiv = 'development'
+
+	# elif request_name(request) == 'management':
+	# 	gotodiv = 'management'
+
+	# elif request_name(request) == 'training':
+	# 	gotodiv = 'training'
+
+	# TEST 
+	# import pdb; pdb.set_trace()
+	# TEST
+
 	return render(
 		request,
-		'trainings/trainings.html',
+		'trainings/services.html',
 		context_instance = RequestContext(request,
 			{			
 			'trainings': trainings,
 			"form_signup" : form,
+			# "gotodiv" : gotodiv,
 			})
 		)
+
+# def request_name(request):
+#     return request.path.split('/')[-2]
+     
 
 @csrf_exempt
 def module(request, pk):

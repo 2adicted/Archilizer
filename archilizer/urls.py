@@ -29,8 +29,9 @@ urlpatterns = [
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     # training
-    url(r'^training/$', 'training.views.training', name='trainings'),
+    url(r'^training/$', 'training.views.services', name='trainings'),
     url(r'^training/(?P<pk>\d+)/$', 'training.views.module', name='module'),
+    url(r'^services/$', 'training.views.services', name='services'),
     # downloads
     url(r'^downloads/$', 'archilizer.views.under_construction', name='downloads'),
     # url(r'^downloads/', 'download.views.download', name='downloads'),

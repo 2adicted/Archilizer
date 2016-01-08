@@ -127,6 +127,14 @@ strong {
 .layer {
     background-color: rgba(0, 0, 0, 0.5);
 }
+.layer-white {
+    background-color: rgba(245, 245, 245, 1.0);
+    padding: 1.5em 0 2.5em 0;
+}
+.layer-blue {
+    background-color: rgba(0, 136, 204, 0.9);
+    padding: 1.5em 0 2.5em 0;
+}
 .front-title{
     font-weight: 800;
     font-size:52px !important;
@@ -332,7 +340,7 @@ strong {
     margin-top: 6em;
 }
 .round{
-    /*position:relative;*/
+    position:relative;
     /*left:0;*/
     display: table;
     margin: 0 auto;
@@ -679,7 +687,83 @@ strong {
 .icons{
     margin-top: 1em;
 }
-/* training */
+/* services */
+.services h1{    
+    text-transform: uppercase;
+}
+.services a{
+    font-size: 14px;      
+}
+.services li{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: medium;    
+    font-size: 14px;  
+    /*text-transform: uppercase;*/
+    color:#141414;
+}
+.services ul{
+    margin-bottom: 1.8em;
+}
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
+.red{    
+    background-color: rgba(195, 0, 0, 0.9);
+    padding: 1.5em 0 2.5em 0;
+}
+.red h1{
+    color:white !important;
+}
+.red p{
+    color:white !important;
+}
+.red a{
+    color:#141414 !important;
+    font-weight: bold;
+    line-height:150%;
+}
+.red li{
+    color:#C4C4C4;
+}
+.whites h1{
+    color:black !important;
+}
+.whites p{
+    color:#333333 !important;
+    font-weight: 500;
+}
+.whites a{
+    color:#141414 !important;
+    font-weight: bold;
+    line-height:150%;
+    font-size:14px; 
+    font-weight: 300; 
+    color:#C30000 !important;
+}
+.whites li{
+    /*color:#C4C4C4;*/
+}
+.blue h1{
+    color:#141414 !important;
+}
+.blue p{
+    color:#141414 !important;
+    font-weight: 500;
+}
+.blue a{
+    color:#141414 !important;
+    font-weight: bold;
+    line-height:150%;
+    font-size:14px; 
+    font-weight: 300; 
+    color:#FBFBFB !important;
+}
+.blue li{
+    /*color:#C4C4C4;*/
+}
 .h-middle{
     position:relative;
     /*top:50%;*/
