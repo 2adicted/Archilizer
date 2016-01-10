@@ -25,7 +25,7 @@
 <style>
 /* Custom style because of backgorund */
 	body{   
-	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
+	    background: url('{% static 'img/yemen_test.jpg' %}') no-repeat         
 	        center center fixed;
 	    -webkit-background-size: cover; 
 	    -moz-background-size: cover; 
@@ -43,13 +43,16 @@
 				<p class="about-home-p">
 				 We do <strong class="strong-light">BIM</strong>, <strong class="strong-light">Revit</strong> and solve time-consuming problems in creative, computational ways. We are a <strong style="color:#FBFBFB;">London</strong> based start-up which supports micro and small architectural practices with all our <a href="{% url 'trainings' %}">services.</a> 
 				 <br><br>
-				 Do we need to talk? Get in contact with us and we will call you. We'd love to help!
+				 Do we need to talk? Get in 
+				<a href="{% url 'contact' %}">contact</a> with us and we will call you. We'd love to help!
 				</p>	
 		</div>
 		<div class="col-md-6 horizontal-align">
 			<span class="hvr-buzz-out">
 				<a href="{% url 'contact' %}">
+					<div class="test">
 					<img class='svg' id="fill" src="{% static 'img/computer.svg' %}" alt='contact us buzzing computer'>
+					</div>
 				</a>
 			</span>
 		</div>
@@ -58,6 +61,21 @@
 {% endblock %}
 
 {% block sub-content %}
+<style type="text/css">
+	.t1{
+		background:url('{% static 'img/under_construction_icon.jpg' %}') no-repeat 25% 70%;
+		background-size: 300px;
+	}
+	.t2{
+		background:url('{% static 'img/test/school_old.jpg' %}') no-repeat 70% 60%;
+		background-size: 300px;
+	}
+	.t3{
+		background:url('{% static 'img/test/computer.jpg' %}') no-repeat center bottom;
+		background-size: 300px;
+	}
+</style>
+
 <div class="row featured-container">
 	<div class="col-xl-12">
 		<span class="text-align-center">			
@@ -76,13 +94,14 @@
 	</div>
 	<div class="container default-container">	
 		<div class="col-sm-4">
+
 			<h3 class="text-align-center"> BIM Management </h3> 
-			<div class="round">
-			<i class="fa fa-group fa-2x fa-center fa-vertical-center"></i>
-			<a href="{% url 'services' %}#management">
-            <span class="panel"></span>
-        	</a>
-			</div>
+			<div class="round t1 ">				
+				<i class="fa fa-group fa-center fa-vertical-center"></i>
+				<a href="{% url 'services' %}#management">
+	            <span class="panel"></span>
+	        	</a>
+			</div>	
 			<div class="holder">
 			<p class="text-align-center">
 			We are uniquely equipt to slot in and out of your existing workflow, adapting it to the set of BIM requirements you are facing. Feel free to focus on creating some great Design, as we take on our favorite part - BIM. 
@@ -91,20 +110,20 @@
 		</div>		
 		<div class="col-sm-4">
 			<h3 class="text-align-center"> Training </h3> 	
-			<div class="round">
+			<div class="round t2">
 			<i class="fa fa-graduation-cap fa-2x fa-center fa-vertical-center" style="color:#FBFBFB;"></i>
 			<a href="{% url 'services' %}#training">
             <span class="panel"></span>
         	</a>
 			</div>
 			<div class="holder">
-			<p class="text-align-center"> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring new skill. </p>
+			<p class="text-align-center"> We are deeply pationate about the process of learning and we will lead you through the difficult path of acquiring a new skill. </p>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<h3 class="text-align-center"> Development </h3> 
-			<div class="round">
-			<i class="fa fa-cogs fa-2x fa-center fa-vertical-center" style="color:#0088CC;"></i>
+			<div class="round t3">
+			<i class="fa fa-cogs fa-2x fa-center fa-vertical-center"></i>
 			<a href="{% url 'services' %}#development">
             <span class="panel"></span>
         	</a>

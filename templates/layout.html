@@ -19,7 +19,17 @@
       {% block jquery %}{% endblock %}
     });
     </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
 
+        // $("#myModal").modal('show');
+      if (!sessionStorage.alreadyClicked) {
+        $("#myModal").modal('show');
+        sessionStorage.alreadyClicked = 1;
+      }
+
+      });
+    </script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{% static 'js/ie-emulation-modes-warning.js' %}"></script>
@@ -32,6 +42,7 @@
   </head>
 
   <body>
+    {% include 'modal.html' %}
     <div class="wrapper">
     	{% include 'navbar.html' %}
       {% block jumbotron %}{% endblock %} 
