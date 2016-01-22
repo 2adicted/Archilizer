@@ -21,7 +21,8 @@ class TrainingModule(models.Model):
 	level = models.CharField(max_length=30)
 	attendants = models.DecimalField(max_digits=2, decimal_places=0)
 	image = models.ImageField(upload_to='modules/')
-
+	url = 'module'
+	
 	def __unicode__(self):
 		return self.title
 

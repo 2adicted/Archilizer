@@ -138,34 +138,21 @@
 
 <div class="row featured-container" style="min-height:750px;" id="activity">
 	<div class="container">
-	<h2 style="margin-top:1em; margin-bottom: 3em;" id="we-do"> RECENT ACTIVITY </h2>
+	<h2 style="margin-top:1em; margin-bottom: 3em;" id="activity"> RECENT ACTIVITY </h2>
 
-    <!-- Posts -->
-    {% for post in posts %}
-    <div class="col-sm-4 grid">
-    	<div class="col-bombon">
-		<img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post' class="cover">
-        <h2 class="h2-buttons">{{ post.title }}</h2>
-        <a href="{% url 'blog-post' post.pk %}">
-            <span class="panel"></span>
-        </a>	
-        </div>	 
-    </div>
-    {% endfor %}
-    <!-- Services  -->
-    {% for service in services %}
-    <div class="col-sm-4 grid">
-    	<div class="col-bombon">
-		<img  src='{{ MEDIA_URL }}{{ service.image }}' alt='image for particular blog post' class="cover">
-        <h2 class="h2-buttons">{{ service.title }}</h2> 
-        <a href="{% url 'module' service.pk %}">
-            <span class="panel"></span>
-        </a>	
-    	</div>	 
-    </div>
-    {% endfor %}
+	{% for result in results %}
+	    {# Each "result" is either a Blog model object or a Training model object. #}
 	    
-	<!-- <div class="empty" ></div> -->
+	    <div class="col-sm-4 grid">
+	    	<div class="col-bombon">
+			<img  src='{{ MEDIA_URL }}{{ result.image }}' alt='image for particular blog post' class="cover">
+	        <h2 class="h2-buttons">{{ result.title }}</h2> 
+	        <a href="{% url result.url result.pk %}">
+	            <span class="panel"></span>
+	        </a>	
+	    	</div>	 
+    	</div>
+	{% endfor %}
 	</div>
 </div>
 

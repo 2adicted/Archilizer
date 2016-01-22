@@ -1,7 +1,19 @@
 ﻿{% extends 'layout.html' %}
 
 {% block content %}
-<div class="inner cover">
-  <h1 class="cover-heading">400. There is a problem with your request.</h1>
+
+<style type="text/css">
+.inner-cover{
+	text-align: center;
+}	
+.min-height{
+    min-height: 690px;
+}
+</style>
+<div class="row top-container min-height inner-cover vertical-align">
+	<div class="col-md-12">
+	<h2>ERROR 400</h2>
+	  <p class="cover-heading">There is a problem with your request.</p>
+	</div>
 </div>
 {% endblock %}

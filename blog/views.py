@@ -16,7 +16,7 @@ from newsletter.forms import SignUpForm
 
 def main(request):
 	""" Main listing """
-	posts = Post.objects.all().order_by("-created")
+	posts = Post.objects.all().order_by("-created").filter(visible=True)
 	paginator = Paginator(posts, 12)
 
 	try: page = int(request.GET.get("page", '1'))
@@ -58,7 +58,7 @@ def category_lst():
 
 def month(request, year, month):
 	"""Monthly archive."""
-	posts = Post.objects.filter(created__year=year, created__month=month)
+	posts = Post.objects.filter(created__year=year, created__month=month, visible=True).order_by("-created")
 
 	#add form
 	form = SignUpForm(request.POST or None)
@@ -184,7 +184,7 @@ def delete_comment(request, post_pk, pk=None):
 
 def category(request, categorySlug, pk):
 	"""Get specified category"""
-	posts = Post.objects.all().order_by('-created')
+	posts = Post.objects.all().order_by('-created').filter(visible=True)
 	category_posts = []
 	for post in posts:
 		if post.categories.filter(slug=categorySlug):

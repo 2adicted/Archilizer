@@ -18,7 +18,9 @@ class Post(models.Model):
 	created = models.DateTimeField(editable=True)
 	categories = models.ManyToManyField('Category', blank=True, through='CategoryToPost')
 	image = models.ImageField(upload_to='blogposts/');
-
+	visible = models.BooleanField(default=True);
+	url = 'blog-post'
+	
 	def __unicode__(self):
 		return self.title
 

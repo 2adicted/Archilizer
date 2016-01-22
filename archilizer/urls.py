@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+import django.views.defaults
 
 urlpatterns = [
     # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
@@ -45,7 +46,8 @@ urlpatterns = [
     url(r'^blog/categories/(?P<categorySlug>\w+)/?$', 'blog.views.category', name='blog-category'),
     url(r'^blog/categories/(?P<categorySlug>\w+)/(?P<pk>\d+)/?$', 'blog.views.category', name='blog-category-pk'),
     # tinymce    
-    url(r'^tinymce/', include('tinymce.urls')),   
+    url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^404/$', django.views.defaults.page_not_found, ),
 ]
 
 if settings.DEBUG:

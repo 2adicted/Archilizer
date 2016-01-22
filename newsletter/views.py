@@ -1,9 +1,11 @@
 from django.conf import settings
+from django.core.paginator import Paginator, InvalidPage, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
+from itertools import chain
 
 from .forms import SignUpForm, ContactForm
 from blog.models import Post
@@ -18,10 +20,25 @@ def home(request):
 	title = "BIM Management | Revit Training | Revit Plugins & Custom Tools "
 
 	#add blog-posts	
-	posts = Post.objects.all().order_by("-created")[:3]
+	posts = Post.objects.all().order_by("-created").filter(visible=True)
 
 	#add services (have to rename them)
 	services = TrainingModule.objects.all()[:3]
+
+	#concatenate the two lists
+	result_list = list(chain(posts, services))[:6]
+
+	#no pagination for now
+
+	# paginator = Paginator(result_list, 6)
+
+	# page = request.GET.get('page')
+	# try:
+	# 	results = paginator.page(page)
+	# except PageNotAnInteger:
+	# 	results = paginator.page(1)
+	# except EmptyPage:
+	# 	contacts = paginator.page(paginator.num_pages)
 
 	#add form
 	form = SignUpForm(request.POST or None)
@@ -44,6 +61,7 @@ def home(request):
 			"form_signup" : form,
 			"posts" : posts,
 			"services" : services,
+			"results" : result_list,
 			})
 		)
 
@@ -99,6 +117,17 @@ def contact(request):
 
 def thanks(request):
 	title = 'Thank you'
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.get("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
 
 	return render(
 		request,
@@ -106,6 +135,7 @@ def thanks(request):
 		context_instance = RequestContext(request,
 			{			
 			"title" : title,
+			"form_signup" : form,
 			})
 		)
 

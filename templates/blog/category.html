@@ -21,7 +21,9 @@
         {% for post in posts %}
         <div class="col-sm-12">
             <div class="blog-post">
-                <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>            
+                <div class="blog-post-img">
+                <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>        
+                </div>    
                 <a href="{% url 'blog-post' post.pk %}">
                     <span class="panel"></span>
                 </a>
