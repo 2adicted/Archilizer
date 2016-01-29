@@ -11,7 +11,7 @@ from django.template import RequestContext
 from .models import Post, Comment, Category
 from .forms  import CommentForm
 
-from newsletter.forms import SignUpForm
+from signup.forms import SignUpForm
 # Create your views here.
 
 def main(request):

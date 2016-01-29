@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
-from newsletter.forms import SignUpForm
+from signup.forms import SignUpForm
 
 from django.views.decorators.csrf import csrf_exempt
 

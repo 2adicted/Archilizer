@@ -23,10 +23,10 @@ urlpatterns = [
     # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
     url(r'^downloads/thankyou/$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'newsletter.views.home', name='home'),
+    url(r'^$', 'signup.views.home', name='home'),
     # url(r'^$', 'archilizer.views.under_construction', name='downloads'),
-    url(r'^contact/$', 'newsletter.views.contact', name='contact'),
-    url(r'^contact/thanks/$', 'newsletter.views.thanks', name='thanks'),
+    url(r'^contact/$', 'signup.views.contact', name='contact'),
+    url(r'^contact/thanks/$', 'signup.views.thanks', name='thanks'),
     url(r'^about/$', 'archilizer.views.about', name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     # training

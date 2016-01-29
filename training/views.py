@@ -3,7 +3,7 @@ from django.template import RequestContext
 
 from .models import TrainingModule
 
-from newsletter.forms import SignUpForm
+from signup.forms import SignUpForm
 
 from django.views.decorators.csrf import csrf_exempt
 
