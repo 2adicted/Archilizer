@@ -16,8 +16,19 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
 from django.contrib import admin
+from django.http import HttpResponse
 import django.views.defaults
+
+from blog.models import LatestNewsFeed
+
+from views import BlogSitemap, StaticViewSitemap
+
+sitemaps = {
+'post' : BlogSitemap,
+'static' : StaticViewSitemap,        
+}
 
 urlpatterns = [
     # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
@@ -36,6 +47,8 @@ urlpatterns = [
     # downloads
     url(r'^downloads/$', 'archilizer.views.under_construction', name='downloads'),
     # url(r'^downloads/', 'download.views.download', name='downloads'),
+    # release
+    url(r'^release/$', 'release.views.main', name='release'),
     # blog
     url(r'^blog/$', 'blog.views.main', name='blog'),
     url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),
@@ -48,7 +61,15 @@ urlpatterns = [
     # tinymce    
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^404/$', django.views.defaults.page_not_found, ),
+    # feed
+    url(r'^latest/feed/$', LatestNewsFeed()),
+    # verification
+    url(r'^googlea3bd852d82023258\.html$', lambda r: HttpResponse("google-site-verification: googlea3bd852d82023258.html", content_type="text/plain")),
+    url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain")),
+    # sitemap
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
+
 
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

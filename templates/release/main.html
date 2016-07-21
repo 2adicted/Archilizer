@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head_title %} {{ title }} {{ block.super }} {% endblock %}
+
+{% block content %}
+<div class="row top-container vertical-align" style="min-height:60em;">
+    <div class="col-sm-6">
+        <div class="form">
+        {% if title %}
+        <h1> {{title}}</h1>
+        <p> Information about the first Archilizer Revit Plugin "Family Editor Interface" will be published soon.</p>
+        <br>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

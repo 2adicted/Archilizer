@@ -12,8 +12,8 @@ from blog.models import Post
 from training.models import TrainingModule
 
 from django.views.decorators.csrf import csrf_exempt
-
 # Create your views here.
+
 
 @csrf_exempt
 def home(request):

@@ -583,6 +583,9 @@ strong {
     margin-top: 1em;
     margin-bottom: 2.4em;
 }
+.blog-post-text-post strong{
+    color: black !important;
+}
 .blog-post-text p{
     font-size: 0.9em;
     font-family: 'Open Sans', sans-serif;

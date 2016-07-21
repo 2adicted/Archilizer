@@ -1,8 +1,11 @@
+from django.contrib.sitemaps import Sitemap
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
 
 from signup.forms import SignUpForm
+from blog.models import Post
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -72,4 +75,22 @@ def under_construction_subscribed(request):
 		)
 
 
+class BlogSitemap(Sitemap):
+	changefreq = "weekly"
+	priority = 1.0
 
+	def items(self):
+		return Post.objects.filter(visible=True)
+
+	def lastmod(self, obj):
+		return obj.created
+
+class StaticViewSitemap(Sitemap):
+    priority = 0.5
+    changefreq = 'monthly'
+
+    def items(self):
+        return ['home', 'about', ]
+
+    def location(self, item):
+        return reverse(item)

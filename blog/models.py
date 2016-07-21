@@ -1,8 +1,12 @@
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
+
+from django.contrib.syndication.views import Feed
+from django.contrib.syndication.views import FeedDoesNotExist
 
 from cStringIO import StringIO
 from tinymce.models import HTMLField
@@ -20,9 +24,13 @@ class Post(models.Model):
 	image = models.ImageField(upload_to='blogposts/');
 	visible = models.BooleanField(default=True);
 	url = 'blog-post'
+	description = models.CharField(max_length=60)
 	
 	def __unicode__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return "/blog/%i/" % self.id
 
 	def save(self, *args, **kwargs):
 		"""On save, update timestamps"""
@@ -75,3 +83,16 @@ class CategoryToPost(models.Model):
 	post = models.ForeignKey(Post)
 	caregory = models.ForeignKey(Category)
 
+class LatestNewsFeed(Feed):
+	title = "Latest Archilizer News"
+	link = "/blog-post/"
+	description = "Updates on news, blog post and other interesting events"
+
+	def items(self):
+		return Post.objects.order_by("-created").filter(visible=True)[:5]
+
+	def item_title(self, item):
+		return item.title
+
+	def item_description(self, item):
+		return item.description
