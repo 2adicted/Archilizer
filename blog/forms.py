@@ -10,4 +10,6 @@ class CommentForm(forms.ModelForm):
 	class Meta:
 		""" created, author, body, post """
 		model = Comment
+		widgets = {'aproved': forms.HiddenInput()}
 		exclude = ["post"]
+

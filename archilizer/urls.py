@@ -67,7 +67,7 @@ urlpatterns = [
     url(r'^googlea3bd852d82023258\.html$', lambda r: HttpResponse("google-site-verification: googlea3bd852d82023258.html", content_type="text/plain")),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain")),
     # sitemap
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 

@@ -139,6 +139,7 @@ def add_comment(request, pk):
 		
 		notify = True
 		if request.user.username == 'ak': notify = False
+
 		comment.save(notify=notify)
 		
 	return HttpResponseRedirect(reverse("blog-post", args=(pk,)))

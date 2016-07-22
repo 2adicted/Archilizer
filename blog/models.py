@@ -1,3 +1,4 @@
+from django import forms
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.mail import send_mail
@@ -45,6 +46,7 @@ class Comment(models.Model):
 	author = models.CharField(max_length=60)
 	body = models.TextField()
 	post = models.ForeignKey(Post)
+	aproved = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return unicode("%s: %s" % (self.post, self.body[:60]))
