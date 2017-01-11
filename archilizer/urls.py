@@ -25,6 +25,12 @@ from blog.models import LatestNewsFeed
 
 from views import BlogSitemap, StaticViewSitemap
 
+from archilizer import views as archilizer_views
+from signup import views as signup_views
+from training import views as training_views
+from release import views as release_views
+from blog import views as blog_views
+
 sitemaps = {
 'post' : BlogSitemap,
 'static' : StaticViewSitemap,        
@@ -32,32 +38,33 @@ sitemaps = {
 
 urlpatterns = [
     # url(r'^$', 'archilizer.views.under_construction', name='under_construction'),
-    url(r'^downloads/thankyou/$', 'archilizer.views.under_construction_subscribed', name='under_construction_subscribed'),
+    url(r'^downloads/thankyou/$', archilizer_views.under_construction_subscribed, name='under_construction_subscribed'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'signup.views.home', name='home'),
+    url(r'^$', signup_views.home, name='home'),
     # url(r'^$', 'archilizer.views.under_construction', name='downloads'),
-    url(r'^contact/$', 'signup.views.contact', name='contact'),
-    url(r'^contact/thanks/$', 'signup.views.thanks', name='thanks'),
-    url(r'^about/$', 'archilizer.views.about', name='about'),
+    url(r'^contact/$', signup_views.contact, name='contact'),
+    url(r'^contact/thanks/$', signup_views.thanks, name='thanks'),
+    url(r'^about/$', archilizer_views.about, name='about'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     # training
-    url(r'^training/$', 'training.views.services', name='trainings'),
-    url(r'^training/(?P<pk>\d+)/$', 'training.views.module', name='module'),
-    url(r'^services/$', 'training.views.services', name='services'),
+    url(r'^training/$', training_views.services, name='trainings'),
+    url(r'^training/(?P<pk>\d+)/$', training_views.module, name='module'),
+    url(r'^services/$', training_views.services, name='services'),
     # downloads
-    url(r'^downloads/$', 'archilizer.views.under_construction', name='downloads'),
+    url(r'^downloads/$', archilizer_views.under_construction, name='downloads'),
     # url(r'^downloads/', 'download.views.download', name='downloads'),
     # release
-    url(r'^release/$', 'release.views.main', name='release'),
+    url(r'^release/$', release_views.main, name='release'),
     # blog
-    url(r'^blog/$', 'blog.views.main', name='blog'),
-    url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post', name='blog-post'),
-    url(r'^blog/add_comment/(?P<pk>\d+)/$', 'blog.views.add_comment', name='blog-add-comment'),
-    url(r'^blog/month/(\d+)/(\d+)/$', 'blog.views.month', name='blog-month'),
-    url(r'^blog/delete_comment/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
-    url(r'^blog/delete_comment/(\d+)/(\d+)/$', 'blog.views.delete_comment', name='blog-delete-comment'),
-    url(r'^blog/categories/(?P<categorySlug>\w+)/?$', 'blog.views.category', name='blog-category'),
-    url(r'^blog/categories/(?P<categorySlug>\w+)/(?P<pk>\d+)/?$', 'blog.views.category', name='blog-category-pk'),
+    url(r'^blog/$', blog_views.main, name='blog'),
+    url(r'^blog/(?P<pk>\d+)/$', blog_views.post, name='blog-post'),
+    url(r'^blog/(?P<slug>[\w-]+)/$', blog_views.post_detail, name='blog-detail'),
+    url(r'^blog/add_comment/(?P<pk>\d+)/$', blog_views.add_comment, name='blog-add-comment'),
+    url(r'^blog/month/(\d+)/(\d+)/$', blog_views.month, name='blog-month'),
+    url(r'^blog/delete_comment/(\d+)/$', blog_views.delete_comment, name='blog-delete-comment'),
+    url(r'^blog/delete_comment/(\d+)/(\d+)/$', blog_views.delete_comment, name='blog-delete-comment'),
+    url(r'^blog/categories/(?P<categorySlug>\w+)/?$', blog_views.category, name='blog-category'),
+    url(r'^blog/categories/(?P<categorySlug>\w+)/(?P<pk>\d+)/?$', blog_views.category, name='blog-category-pk'),
     # tinymce    
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^404/$', django.views.defaults.page_not_found, ),

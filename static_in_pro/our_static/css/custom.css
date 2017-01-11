@@ -556,6 +556,7 @@ strong {
     color: #C4C4C4;
     line-height: 150%;
 }
+
 .blog-post{
     position: relative;
     margin-bottom: 0.5em;
@@ -586,6 +587,9 @@ strong {
 .blog-post-text-post strong{
     color: black !important;
 }
+.blog-post-text-post h1{
+    font-weight: 600;
+}
 .blog-post-text p{
     font-size: 0.9em;
     font-family: 'Open Sans', sans-serif;
@@ -611,11 +615,11 @@ strong {
     color:#141414 !important;  
 }
 .blog-post-text-post p{
-    font-size: 1.05em;
+    font-size: 16px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400; 
-    line-height: 1.6em;  
-    color:#141414;
+    line-height: 1.5;  
+    color:#333333;
     margin-bottom: 1.5em;
     margin-top: 1.5em;
 }

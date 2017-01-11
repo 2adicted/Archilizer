@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.core.urlresolvers import reverse
 from django.db.models import Count
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 
 from .models import Post, Comment, Category
@@ -123,6 +123,38 @@ def post(request, pk):
 		})
 	)
 
+def post_detail(request, slug):
+	"""Single post with comments and a comment form."""
+	post = get_object_or_404(Post, slug=slug)
+	comments = Comment.objects.filter(post=post)
+
+	#add form
+	form = SignUpForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		full_name = form.cleaned_data.ge, get_object_or_404t("full_name")
+		if not full_name:
+			full_name = "New full name"
+		instance.full_name = full_name
+		instance.save()
+		return HttpResponseRedirect('')
+
+	return render(
+	request,
+	'blog/post.html',
+	context_instance = RequestContext(request,
+		{
+		"post" : post,
+		"comments": comments,
+		"form": CommentForm(), 
+	 	"user": request.user,
+ 		"months" : mkmonth_lst(),
+ 		"categories": category_lst(),
+		"form_signup" : form,
+		})
+	)
+
 def add_comment(request, pk):
 	""" Add a new comment. """
 	p = request.POST
@@ -134,13 +166,13 @@ def add_comment(request, pk):
 		cf = CommentForm(p, instance=comment)
 		cf.fields["author"].required = False
 
-		comment = cf.save(commit=False)
-		comment.author = author
-		
-		notify = True
-		if request.user.username == 'ak': notify = False
-
-		comment.save(notify=notify)
+		if cf.is_valid():
+			comment = cf.save(commit=False)
+			comment.author = author
+			
+			notify = True
+			if request.user.username == 'ak': notify = False
+			comment.save(notify=notify)
 		
 	return HttpResponseRedirect(reverse("blog-post", args=(pk,)))
 

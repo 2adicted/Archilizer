@@ -18,14 +18,14 @@
         <div class="col-sm-12">
             <div class="blog-post">
                 <img  src='{{ MEDIA_URL }}{{ post.image }}' alt='image for particular blog post'>            
-                <a href="{% url 'blog-post' post.pk %}">
+                <a href="{% url 'blog-detail' post.slug %}">
                     <span class="panel"></span>
                 </a>
             </div> 
             <div class="row">
                 <div class="col-sm-9">
                     <div class="blog-post-text">
-                        <a href="{% url 'blog-post' post.pk %}">
+                        <a href="{% url 'blog-detail' post.slug %}">
                         <h4>{{ post.title }}</h4>
                         </a>
                         <p> {{ post.body|safe|truncatewords_html:66 }} </p>
