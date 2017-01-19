@@ -3,7 +3,9 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template import RequestContext
-
+from django.shortcuts import redirect
+from django.conf import settings
+import stripe
 from signup.forms import SignUpForm
 from blog.models import Post
 
@@ -34,6 +36,32 @@ def about(request):
 			"form_signup" : form,
 			})
 		)
+
+def donate(request):
+    stripe_key = settings.STRIPE_KEYS['publishable']
+    context = {'stripe_key': stripe_key,}
+    return render(request, 'donate.html', context)
+
+@csrf_exempt
+def stripe_donation(request):
+    if request.method == 'POST':
+        amount = 1000
+        stripe.api_key = settings.STRIPE_KEYS['secret']
+        customer = stripe.Customer.create(
+            email=request.POST.get('stripeEmail', ''),
+            card=request.POST.get('stripeToken', '')
+        )
+        try:
+            stripe.Charge.create(
+                customer=customer.id,
+                amount=amount,
+                currency='eur',
+                description='Archilizer donation'
+            )
+        except:
+            return redirect('/')
+        return redirect('/')
+    return redirect('/')
 
 @csrf_exempt
 def under_construction(request):

@@ -1,5 +1,6 @@
 beautifulsoup4==4.4.1
 Django==1.9.1
+dj-stripe==0.3.5
 django-crispy-forms==1.5.2
 django-nocaptcha-recaptcha==0.0.19
 django-registration-redux==1.2
