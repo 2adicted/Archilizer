@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block head_title %} Donate - Make a donation {{ block.super }} {% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
+
+{% block sub-content %}
+<link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"></link>
+ <style>
+/* Custom style because of backgorund */
+	body{   
+	    background: url('{% static 'img/yemen.jpg' %}') no-repeat         
+	    center center fixed;
+	    -webkit-background-size: cover; 
+	    -moz-background-size: cover; 
+	    -o-background-size: cover; 
+	    background-size: cover;     
+	}	
+	body{
+		padding-top: 50px !important;
+	}
+</style>
+
+<div class="non-container">
+	<div class="container about">	
+		<div class="row">
+				<div class="col-sm-6">
+					<p></p>
+					<br />
+					<h2 style="margin-top:0em; margin-bottom: 2em;" id="we-do"> MAKE A DONATION</h2>
+				</div>
+		</div>
+		<div class="row">
+				<div class="col-sm-12">					
+					<p class="donate-p-dark">
+					Our <a href="{% url 'trainings' %}">services</a> are focused around creating value for individual architects or small practices. 
+					</p>
+
+					<p class="donate-p-dark" id="management">
+					Just click the button at the bottom of pages or use the Donate button below. 
+					</p>
+					<p class="donate-p-dark">
+					<strong>All information entered here is private.</strong><br/>
+					Donations are securely handled by <strong>Stripe</strong>, and all you need is a minute of time and a credit card.
+					<br/>
+					
+					</p>
+					<form action="/stripe/donation" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{stripe_key}}"
+                                data-image="{% static 'img/A-logo.ico' %}"
+                                data-name="Archilizer.com"
+                                data-description="Donate and keep Archilizer alive!"
+                                data-amount="500"
+								data-label="Donate €5"
+								data-allow-remember-me="false"
+                                data-panel-label="Donate">
+                              </script>
+                    </form>
+					<br/>
+					<form action="/stripe/donation" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{stripe_key}}"
+                                data-image="{% static 'img/A-logo.ico' %}"
+                                data-name="Archilizer.com"
+                                data-description="Donate and keep Archilizer alive!"
+                                data-amount="1000"
+								data-label="Donate €10"
+								data-allow-remember-me="false"
+                                data-panel-label="Donate">
+                              </script>
+                    </form>
+                    <br/>
+					<form action="/stripe/donation" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{stripe_key}}"
+                                data-image="{% static 'img/A-logo.ico' %}"
+                                data-name="Archilizer.com"
+                                data-description="Donate and keep Archilizer alive!"
+                                data-amount="2000"
+								data-label="Donate €20"
+								data-allow-remember-me="false"
+                                data-panel-label="Donate">
+                              </script>
+                    </form>
+					<br/>
+					<form action="/stripe/donation" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{stripe_key}}"
+                                data-image="{% static 'img/A-logo.ico' %}"
+                                data-name="Archilizer.com"
+                                data-description="Donate and keep Archilizer alive!"
+                                data-amount="5000"
+								data-label="Donate €50"
+								data-allow-remember-me="false"
+                                data-panel-label="Donate">
+                              </script>
+                    </form>
+					<br/>
+					<form action="/stripe/donation" method="POST">
+                              <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{stripe_key}}"
+                                data-image="{% static 'img/A-logo.ico' %}"
+                                data-name="Archilizer.com"
+                                data-description="Donate and keep Archilizer alive!"
+                                data-amount="10000"
+								data-label="Donate €100"
+								data-allow-remember-me="false"
+                                data-panel-label="Donate">
+                              </script>
+                    </form>
+					<br/>
+				</div>		
+
+	</div>
+</div>
+
+{% endblock %}

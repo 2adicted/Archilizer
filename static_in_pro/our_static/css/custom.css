@@ -768,6 +768,53 @@ strong {
 .services ul{
     margin-bottom: 1.8em;
 }
+
+/* Donate */
+.donate a{
+    font-size:14px !important;
+}
+.donate p{    
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 1.5em;
+    font-weight: 300;
+}
+.donate h3{
+    font-size:14px;
+    /*color:#8E8E8E;*/
+    text-align: right;
+    line-height: 150%;
+    margin: 2em 0 2em 0;
+}
+.donate strong{
+    color:black;
+}
+.donate-h{
+    position:relative;
+    margin-top:2em;
+    margin-bottom: 4em;
+    width:100%;
+}
+.donate-p{
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 1.5em;
+    font-weight: 300;
+    color:#C4C4C4;
+}
+.donate-p-dark{
+    color:black;
+    font-weight: 500;
+}
+.donate-p-special{
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 2em;
+}
+.donate-content{    
+    margin-bottom: 2em;
+}
+
 a.anchor {
     display: block;
     position: relative;
@@ -909,3 +956,4 @@ a.anchor {
 .close:hover{
     color:#FFFFFF;
 }
+
