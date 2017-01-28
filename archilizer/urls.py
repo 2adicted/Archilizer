@@ -53,7 +53,7 @@ urlpatterns = [
     # downloads
     url(r'^downloads/$', archilizer_views.under_construction, name='downloads'),
     # url(r'^downloads/', 'download.views.download', name='downloads'),
-    url(r'^donate$', archilizer_views.donate, name='donate'),
+    url(r'^donate/$', archilizer_views.donate, name='donate'),
     url(r'^stripe/donation', archilizer_views.stripe_donation),
     # release
     url(r'^release/$', release_views.main, name='release'),
